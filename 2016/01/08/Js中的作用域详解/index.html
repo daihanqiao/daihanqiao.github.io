@@ -6,33 +6,33 @@
   <title>Js中的作用域详解 | 代汉桥的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="什么是作用域
-通俗的讲，代码中所有变量和函数都有其各自生效的范围。
-而调用这些变量和函数时，必须在其生效范围内调用才有效。
-这个生效范围，就是作用域。
-而js中是由函数来划分一块一块的生效范围。
+通俗的讲，代码中所有变量和函数都有其各自生效的范围
+而调用这些变量和函数时，必须在其生效范围内调用才有效
+这个生效范围，就是作用域
+而js中是由函数来划分一块一块的生效范围
 
-1234567var b = 1;function test()&amp;#123;    var a = 2;&amp;#125;test();console.log(a);//输出：Uncaught Referen">
+1234567var b = 1;function test()&amp;#123;    var a = 2;&amp;#125;test();console.log(a);//输出：Uncaught ReferenceEr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Js中的作用域详解">
 <meta property="og:url" content="http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/index.html">
 <meta property="og:site_name" content="代汉桥的个人博客">
 <meta property="og:description" content="什么是作用域
-通俗的讲，代码中所有变量和函数都有其各自生效的范围。
-而调用这些变量和函数时，必须在其生效范围内调用才有效。
-这个生效范围，就是作用域。
-而js中是由函数来划分一块一块的生效范围。
+通俗的讲，代码中所有变量和函数都有其各自生效的范围
+而调用这些变量和函数时，必须在其生效范围内调用才有效
+这个生效范围，就是作用域
+而js中是由函数来划分一块一块的生效范围
 
-1234567var b = 1;function test()&amp;#123;    var a = 2;&amp;#125;test();console.log(a);//输出：Uncaught Referen">
-<meta property="og:updated_time" content="2016-01-08T10:15:27.037Z">
+1234567var b = 1;function test()&amp;#123;    var a = 2;&amp;#125;test();console.log(a);//输出：Uncaught ReferenceEr">
+<meta property="og:updated_time" content="2016-01-09T08:21:07.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Js中的作用域详解">
 <meta name="twitter:description" content="什么是作用域
-通俗的讲，代码中所有变量和函数都有其各自生效的范围。
-而调用这些变量和函数时，必须在其生效范围内调用才有效。
-这个生效范围，就是作用域。
-而js中是由函数来划分一块一块的生效范围。
+通俗的讲，代码中所有变量和函数都有其各自生效的范围
+而调用这些变量和函数时，必须在其生效范围内调用才有效
+这个生效范围，就是作用域
+而js中是由函数来划分一块一块的生效范围
 
-1234567var b = 1;function test()&amp;#123;    var a = 2;&amp;#125;test();console.log(a);//输出：Uncaught Referen">
+1234567var b = 1;function test()&amp;#123;    var a = 2;&amp;#125;test();console.log(a);//输出：Uncaught ReferenceEr">
   
     <link rel="alternative" href="/atom.xml" title="代汉桥的个人博客" type="application/atom+xml">
   
@@ -251,32 +251,32 @@
       
           
         <h3 id="u4EC0_u4E48_u662F_u4F5C_u7528_u57DF"><a href="#u4EC0_u4E48_u662F_u4F5C_u7528_u57DF" class="headerlink" title="什么是作用域"></a>什么是作用域</h3><ul>
-<li>通俗的讲，代码中所有变量和函数都有其各自生效的范围。</li>
-<li>而调用这些变量和函数时，必须在其生效范围内调用才有效。</li>
-<li>这个生效范围，就是作用域。</li>
-<li>而js中是由函数来划分一块一块的生效范围。</li>
+<li>通俗的讲，代码中所有变量和函数都有其各自生效的范围</li>
+<li>而调用这些变量和函数时，必须在其生效范围内调用才有效</li>
+<li>这个生效范围，就是作用域</li>
+<li>而js中是由函数来划分一块一块的生效范围</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//输出：Uncaught ReferenceError: a is not defined(…)</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//输出：1</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>该事例中，变量a在test函数中声明并赋值，因而只在该函数内有效，即使执行了test()函数，在外部调用时依然报错。</li>
+<li>该事例中，变量a在test函数中声明并赋值，因而只在该函数内有效，即使执行了test()函数，在外部调用时依然报错</li>
 </ul>
 <h3 id="u4F5C_u7528_u57DF_u7684_u5206_u7C7B"><a href="#u4F5C_u7528_u57DF_u7684_u5206_u7C7B" class="headerlink" title="作用域的分类"></a>作用域的分类</h3><ul>
-<li>js中作用域只有两种：1.全局作用域。2.本地作用域。</li>
-<li>区分全局作用域和本地作用域的办法很简单：在该作用域下定义一个函数或变量，如果能作为window(nodejs 为 global)的属性或方法访问，是则为全局作用域，该变量/函数为全局变量/函数。否则为本地作用域，该变量/函数为局部变量/函数。</li>
+<li>js中作用域只有两种：1.全局作用域。2.本地作用域</li>
+<li>区分全局作用域和本地作用域的办法很简单：在该作用域下定义一个函数或变量，如果能作为Global对象的属性或方法访问，是则为全局作用域，该变量/函数为全局变量/函数。否则为本地作用域，该变量/函数为局部变量/函数</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);<span class="comment">//输出1，a为全局变量，所在作用域为全局作用域</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.test);<span class="comment">//输出test函数，test为全局函数，所在作用域为全局作用域</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.b);<span class="comment">//输出undefined，b为局部变量，所在作用域为本地作用域</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.c);<span class="comment">//输出3，不使用var关键字定义变量时，即使在本地作用域，该变量仍然为全局变量</span></span><br></pre></td></tr></table></figure>
 <h3 id="u4F5C_u7528_u57DF_u6CE8_u610F_u4E8B_u9879_uFF1A"><a href="#u4F5C_u7528_u57DF_u6CE8_u610F_u4E8B_u9879_uFF1A" class="headerlink" title="作用域注意事项："></a>作用域注意事项：</h3><ul>
-<li>上级作用域定义的变量/函数可直接在下级作用域中使用(全局作用域可看做最上层作用域)`</li>
+<li>父作用域定义的变量/函数可直接在子作用域中使用(全局作用域可看做最上层作用域)</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//输出1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);<span class="comment">//a指向父作用域中的变量a</span></span><br><span class="line">    &#125;;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//输出1</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>当下级作用域定义了相同变量名的变量/函数时，只会在当前作用域覆盖该变量/函数</li>
+<li>当父作用域和子作用域定义了相同变量名的变量/函数时，只会在当前子作用域覆盖该变量/函数</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;;</span><br><span class="line">    foo();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    foo2();</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//依次输出2,1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">2</span>;<span class="comment">//a仍指向当前作用域中的变量a</span></span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;;</span><br><span class="line">    foo();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);<span class="comment">//a仍指向父作用域中的变量a</span></span><br><span class="line">    &#125;</span><br><span class="line">    foo2();</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//依次输出2,1</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>当下级作用域修改了上级作用域的变量/函数时，上级作用域中的变量/函数改变</li>
+<li>当子作用域修改了父作用域的变量/函数时，父作用域中的变量/函数改变</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        a += <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;;</span><br><span class="line">    foo();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    foo2();</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//依次输出2,2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        a += <span class="number">1</span>;<span class="comment">//a仍指向父作用域中的变量a</span></span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;;</span><br><span class="line">    foo();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);<span class="comment">//a指向父作用域中的变量a</span></span><br><span class="line">    &#125;</span><br><span class="line">    foo2();</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//依次输出2,2</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -288,7 +288,7 @@
         <p><span>本文标题:</span><a href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 代汉桥 的个人博客">代汉桥</a></p>
         <p><span>发布时间:</span>2016年01月08日 - 16时27分</p>
-        <p><span>最后更新:</span>2016年01月08日 - 18时15分</p>
+        <p><span>最后更新:</span>2016年01月09日 - 16时21分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/08/Js中的作用域详解/" title="Js中的作用域详解">http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -304,12 +304,12 @@
 
     <nav id="article-nav">
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/01/08/hello-world/">
-                    Hello World
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/09/Js中的this详解/">
+                    Js中的this详解.md
                 </a>
             </div>
+        
         
     </nav>
 
@@ -386,19 +386,19 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/01/09/Js中的this详解/" title="上一篇: Js中的this详解.md">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/01/08/hello-world/" title="下一篇: Hello World">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
