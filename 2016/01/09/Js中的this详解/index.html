@@ -11,8 +11,7 @@
 this的指向
 通常情况下，全局作用域下的this指向Global
 构成该作用域的函数(作用域和函数的关系参见Js中的作用域详解)，直接调用而不是作为某个对象的方法调用，该作用域下的this指向Global
-
-12345console.log(this);//全局作用域下的this，指向window">
+12345console.log(this);//全局作用域下的this，指向window对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Js中的this详解.md">
 <meta property="og:url" content="http://daihanqiao.github.io/2016/01/09/Js中的this详解/index.html">
@@ -23,9 +22,8 @@ this的指向
 this的指向
 通常情况下，全局作用域下的this指向Global
 构成该作用域的函数(作用域和函数的关系参见Js中的作用域详解)，直接调用而不是作为某个对象的方法调用，该作用域下的this指向Global
-
-12345console.log(this);//全局作用域下的this，指向window">
-<meta property="og:updated_time" content="2016-01-09T08:20:15.314Z">
+12345console.log(this);//全局作用域下的this，指向window对">
+<meta property="og:updated_time" content="2016-01-13T05:50:50.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Js中的this详解.md">
 <meta name="twitter:description" content="什么是this
@@ -34,8 +32,7 @@ this的指向
 this的指向
 通常情况下，全局作用域下的this指向Global
 构成该作用域的函数(作用域和函数的关系参见Js中的作用域详解)，直接调用而不是作为某个对象的方法调用，该作用域下的this指向Global
-
-12345console.log(this);//全局作用域下的this，指向window">
+12345console.log(this);//全局作用域下的this，指向window对">
   
     <link rel="alternative" href="/atom.xml" title="代汉桥的个人博客" type="application/atom+xml">
   
@@ -258,25 +255,23 @@ this的指向
 </ul>
 <h3 id="this_u7684_u6307_u5411"><a href="#this_u7684_u6307_u5411" class="headerlink" title="this的指向"></a>this的指向</h3><ul>
 <li>通常情况下，全局作用域下的this指向Global</li>
-<li>构成该作用域的函数(作用域和函数的关系参见<a href="http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a>)，直接调用而不是作为某个对象的方法调用，该作用域下的this指向Global</li>
+<li><p>构成该作用域的函数(作用域和函数的关系参见<a href="http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a>)，直接调用而不是作为某个对象的方法调用，该作用域下的this指向Global</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//全局作用域下的this，指向window对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//test函数未被任何变量调用，该作用域下的this指向window对象</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构成该作用域的函数，作为某个对象的方法调用，则该作用域(不包括其子作用域)中的this指向该对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params">argument</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line">a.m = test;</span><br><span class="line">test();<span class="comment">//test函数直接调用，该作用域下的this指向window对象</span></span><br><span class="line">a.m();<span class="comment">//test函数作为对象a的方法调用，输出a对象</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构成该作用域的函数，作为构造函数(通过这个函数生成一个新对象)存在时，this指向生成的新对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.x = <span class="number">1</span>;<span class="comment">//this指向new出的新对象a</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Test();</span><br><span class="line"><span class="built_in">console</span>.log(a.x);<span class="comment">//输出：1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构成该作用域的函数，调用了apply/call方法时，则this指向apply/call方法传入的第一个参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = <span class="number">1</span>; <span class="comment">//这里的this并未指向调用test函数的对象b，而是指向apply传入的第一个参数对象a</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> b = &#123;&#125;;</span><br><span class="line">b.m = test;</span><br><span class="line">b.m.apply(a);</span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">//输出:1</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x);<span class="comment">//输出undefined</span></span><br><span class="line">b.m.apply();<span class="comment">//apply/call未传入第一个参数时，默认为Global</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x);<span class="comment">//输出:1</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//全局作用域下的this，指向window对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//test函数未被任何变量调用，该作用域下的this指向window对象</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>构成该作用域的函数，作为某个对象的方法调用，则该作用域(不包括其子作用域)中的this指向该对象</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params">argument</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line">a.m = test;</span><br><span class="line">test();<span class="comment">//test函数直接调用，该作用域下的this指向window对象</span></span><br><span class="line">a.m();<span class="comment">//test函数作为对象a的方法调用，输出a对象</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>构成该作用域的函数，作为构造函数(通过这个函数生成一个新对象)存在时，this指向生成的新对象</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = <span class="number">1</span>;<span class="comment">//this指向new出的新对象a</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Test();</span><br><span class="line"><span class="built_in">console</span>.log(a.x);<span class="comment">//输出：1</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>构成该作用域的函数，调用了apply/call方法时，则this指向apply/call方法传入的第一个参数。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = <span class="number">1</span>; <span class="comment">//这里的this并未指向调用test函数的对象b，而是指向apply传入的第一个参数对象a</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> b = &#123;&#125;;</span><br><span class="line">b.m = test;</span><br><span class="line">b.m.apply(a);</span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">//输出:1</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x);<span class="comment">//输出undefined</span></span><br><span class="line"></span><br><span class="line">b.m.apply();<span class="comment">//apply/call未传入第一个参数时，默认为Global</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x);<span class="comment">//输出:1</span></span><br></pre></td></tr></table></figure>
 <h3 id="u6269_u5C55"><a href="#u6269_u5C55" class="headerlink" title="扩展"></a>扩展</h3><ul>
-<li>apply和call的区别：参数不一样</li>
+<li>apply和call的区别：参数不一样<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a,b,c</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(a,b,c);</span><br><span class="line">&#125;</span><br><span class="line">foo.call(<span class="literal">null</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//输出1，2，3</span></span><br><span class="line">foo.apply(<span class="literal">null</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);<span class="comment">//仍然输出1，2，3</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a,b,c</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a,b,c);</span><br><span class="line">&#125;</span><br><span class="line">foo.call(<span class="literal">null</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//输出1，2，3</span></span><br><span class="line">foo.apply(<span class="literal">null</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);<span class="comment">//仍然输出1，2，3</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -288,7 +283,7 @@ this的指向
         <p><span>本文标题:</span><a href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 代汉桥 的个人博客">代汉桥</a></p>
         <p><span>发布时间:</span>2016年01月09日 - 14时49分</p>
-        <p><span>最后更新:</span>2016年01月09日 - 16时20分</p>
+        <p><span>最后更新:</span>2016年01月13日 - 13时50分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/09/Js中的this详解/" title="Js中的this详解.md">http://daihanqiao.github.io/2016/01/09/Js中的this详解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/09/Js中的this详解/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -303,6 +298,12 @@ this的指向
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/11/Js内存机制详解/">
+                    Js内存机制详解
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -386,7 +387,9 @@ this的指向
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/01/11/Js内存机制详解/" title="上一篇: Js内存机制详解">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -398,7 +401,7 @@ this的指向
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/11/Js内存机制详解/">Js内存机制详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
