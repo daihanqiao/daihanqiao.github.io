@@ -3,16 +3,14 @@ require([], function (){
 	var isMobileInit = false;
 	var loadMobile = function(){
 		require(['/js/mobile.js'], function(mobile){
-			console.log(mobile);
-			mobile.init();
+			mobile && mobile.init();
 			isMobileInit = true;
 		});
 	};
 	var isPCInit = false;
 	var loadPC = function(){
 		require(['/js/pc.js'], function(pc){
-			console.log(pc);
-			pc.init();
+			pc && pc.init();
 			isPCInit = true;
 		});
 	};
