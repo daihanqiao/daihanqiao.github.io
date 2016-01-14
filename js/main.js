@@ -3,21 +3,21 @@ require([], function (){
 	var isMobileInit = false;
 	var loadMobile = function(){
 		require(['/js/mobile.js'], function(mobile){
-			if(mobile['init']){
+			if(mobile.hasOwnProperty('init')){
 				mobile.init();
 			}
 			isMobileInit = true;
 		});
-	}
+	};
 	var isPCInit = false;
 	var loadPC = function(){
 		require(['/js/pc.js'], function(pc){
-			if(pc['init']){
+			if(pc.hasOwnProperty('init')){
 				pc.init();
 			}
 			isPCInit = true;
 		});
-	}
+	};
 
 	var browser={
 	    versions:function(){
