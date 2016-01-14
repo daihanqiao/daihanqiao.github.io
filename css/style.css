@@ -563,7 +563,7 @@ a {
     color: #999;
     padding: 0;
     margin: 6px;
-    height: 54px;
+    height: 30px;
     display: inline-block;
     font: normal normal normal 30px/1 FontAwesome;
     background: none;
@@ -2031,7 +2031,7 @@ pre .link_url {
   color: #999;
   padding: 0;
   margin: 6px;
-  height: 54px;
+  height: 30px;
   display: inline-block;
   font: normal normal normal 36px/1 FontAwesome;
   background: none;
