@@ -3,18 +3,16 @@ require([], function (){
 	var isMobileInit = false;
 	var loadMobile = function(){
 		require(['/js/mobile.js'], function(mobile){
-			if(mobile.hasOwnProperty('init')){
-				mobile.init();
-			}
+			console.log(mobile);
+			mobile.init();
 			isMobileInit = true;
 		});
 	};
 	var isPCInit = false;
 	var loadPC = function(){
 		require(['/js/pc.js'], function(pc){
-			if(pc.hasOwnProperty('init')){
-				pc.init();
-			}
+			console.log(pc);
+			pc.init();
 			isPCInit = true;
 		});
 	};
