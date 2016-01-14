@@ -3,14 +3,18 @@ require([], function (){
 	var isMobileInit = false;
 	var loadMobile = function(){
 		require(['/js/mobile.js'], function(mobile){
-			mobile.init();
+			if(mobile['init']){
+				mobile.init();
+			}
 			isMobileInit = true;
 		});
 	}
 	var isPCInit = false;
 	var loadPC = function(){
 		require(['/js/pc.js'], function(pc){
-			pc.init();
+			if(pc['init']){
+				pc.init();
+			}
 			isPCInit = true;
 		});
 	}
@@ -67,7 +71,7 @@ require([], function (){
 				$(".article-inner .fancy-ctn").fancybox();
 			}
 		});
-		
+
 	}
 	//是否开启动画
 	if(spfkConfig.animate === true){
@@ -79,7 +83,7 @@ require([], function (){
 				$(".js-avatar").addClass("show");
 			}
 		});
-		
+
 		if(spfkConfig.isHome === true){
 			//content
 			function showArticle(){
@@ -99,12 +103,12 @@ require([], function (){
 			});
 			showArticle();
 		}
-		
+
 	}
-	
+
 	//是否新窗口打开链接
 	if(spfkConfig.open_in_new == true){
 		$(".article a[href]").attr("target", "_blank")
 	}
-	
+
 });
