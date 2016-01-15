@@ -3,18 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Webpack-React最佳实践 | 代汉桥的个人博客</title>
+  <title>Webpack-React最佳实践(一) | 代汉桥的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="Webpack篇目标
+开发简单，项目组件化，复用性强
+编译简单，极简命令行，全页面/单页面均支持
+维护简单，项目结构清晰，耦合度低
+遵从约定大于配置的项目构建实践">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Webpack-React最佳实践">
-<meta property="og:url" content="http://daihanqiao.github.io/2016/01/14/Webpack-React最佳实践/index.html">
+<meta property="og:title" content="Webpack-React最佳实践(一)">
+<meta property="og:url" content="http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践(一)/index.html">
 <meta property="og:site_name" content="代汉桥的个人博客">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-01-14T06:58:23.444Z">
+<meta property="og:description" content="Webpack篇目标
+开发简单，项目组件化，复用性强
+编译简单，极简命令行，全页面/单页面均支持
+维护简单，项目结构清晰，耦合度低
+遵从约定大于配置的项目构建实践">
+<meta property="og:updated_time" content="2016-01-15T09:51:44.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Webpack-React最佳实践">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Webpack-React最佳实践(一)">
+<meta name="twitter:description" content="Webpack篇目标
+开发简单，项目组件化，复用性强
+编译简单，极简命令行，全页面/单页面均支持
+维护简单，项目结构清晰，耦合度低
+遵从约定大于配置的项目构建实践">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -186,10 +198,10 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Webpack-React最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Webpack—React最佳实践(一)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/14/Webpack-React最佳实践/" class="article-date">
+      <a href="/2016/01/14/Webpack—React最佳实践(一)/" class="article-date">
   	<time datetime="2016-01-14T06:57:59.000Z" itemprop="datePublished">2016-01-14</time>
 </a>
     </div>
@@ -203,7 +215,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Webpack-React最佳实践
+      Webpack-React最佳实践(一)
     </h1>
   
 
@@ -224,7 +236,87 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h1 id="Webpack_u7BC7"><a href="#Webpack_u7BC7" class="headerlink" title="Webpack篇"></a>Webpack篇</h1><h2 id="u76EE_u6807"><a href="#u76EE_u6807" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>开发简单，项目组件化，复用性强</li>
+<li>编译简单，极简命令行，全页面/单页面均支持</li>
+<li>维护简单，项目结构清晰，耦合度低</li>
+<li>遵从约定大于配置的项目构建实践<a id="more"></a>
+<h2 id="u73AF_u5883_u914D_u7F6E"><a href="#u73AF_u5883_u914D_u7F6E" class="headerlink" title="环境配置"></a>环境配置</h2></li>
+<li>下载demo：<a href="https://github.com/daihanqiao/React-Contacts" target="_blank" rel="external"><code>react-contacts</code></a></li>
+<li>安装nodejs并在项目目录运行<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -<span class="keyword">g</span> webpack</span><br><span class="line">npm i webpack jsx-loader css-loader style-loader react react-dom extract-text-webpack-<span class="keyword">plugin</span> js-sha1 lodash pubsub-js react-<span class="keyword">bootstrap</span> url-loader <span class="keyword">file</span>-loader reqwest --<span class="keyword">save</span>-dev</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="u76EE_u5F55_u7ED3_u6784"><a href="#u76EE_u5F55_u7ED3_u6784" class="headerlink" title="目录结构"></a>目录结构</h2><ul>
+<li><code>bin</code>: webpack打包完成后执行相关文件处理操作的脚本</li>
+<li><code>src</code>: 项目代码<ul>
+<li><code>components</code>：组件代码</li>
+<li><code>page</code>：页面代码</li>
+</ul>
+</li>
+<li><code>package.json</code>：配置了运行命令<code>npm run dev</code> , <code>npm run release</code> , <code>npm run watch</code> , <code>npm run release-gzip</code></li>
+<li><code>webpack.config.js</code>：webpack配置文件</li>
+</ul>
+<h2 id="u7F16_u7801_u7EA6_u5B9A"><a href="#u7F16_u7801_u7EA6_u5B9A" class="headerlink" title="编码约定"></a>编码约定</h2><ul>
+<li>公共js，css以及需要多次使用的组件等以目录为单位放于<code>components</code>，例如：<ul>
+<li><code>components/bootstrap</code>：存放bootstrap框架css，fonts等内容</li>
+<li><code>components/loader</code>：存放公共组件loader</li>
+<li><code>components/modalAlert</code>：存放公共组件modalAlert</li>
+<li><code>components/toast</code>：存放公共组件toast</li>
+</ul>
+</li>
+<li>页面以目录为单位存放于<code>page</code>，目录名和页面html名必须一致，例如：<ul>
+<li><code>page/index</code>：index页面目录，必须包含<code>index.html</code>文件</li>
+<li>每一个页面目录必须包含一个入口js，命名规则为页面名+<code>.entry.js</code>，例如：<code>index.entry.js</code></li>
+<li>只在当前页面使用的js，css放于当前目录下。</li>
+</ul>
+</li>
+<li>引入js文件方式：<code>require(&quot;name&quot;)</code>，无需路径及后缀，例如引入loader.js：<code>require(&quot;loader&quot;)</code></li>
+<li>引入css文件方式：<code>require(&quot;nameCss&quot;)</code>，无需路径及后缀，文件名+Css，例如引入<br>index.css：<code>require(&quot;indexCss&quot;)</code></li>
+</ul>
+<h2 id="package-json_u8BE6_u89E3_uFF1A"><a href="#package-json_u8BE6_u89E3_uFF1A" class="headerlink" title="package.json详解："></a>package.json详解：</h2><ul>
+<li><code>dev</code>：<ul>
+<li>运行方式<code>npm run dev</code></li>
+<li>实现内容：设置环境变量为<code>dev</code>（window下和linux下有所区别），然后执行<code>webpack --progress --colors</code>对项目进行打包，打包完成后，执行bin目录下的脚本<code>webpackAfter.js</code></li>
+</ul>
+</li>
+<li><code>release</code>：<ul>
+<li>运行方式<code>npm run release</code></li>
+<li>实现内容：设置环境变量为<code>release</code>，然后执行<code>webpack -p --progress --colors</code>对项目进行打包，打包完成后，执行<code>webpackAfter.js</code></li>
+</ul>
+</li>
+<li><code>watch</code>：<ul>
+<li>运行方式<code>npm run watch</code></li>
+<li>实现内容：在<code>npm run dev</code>的基础上，实现webpack的watch模式</li>
+</ul>
+</li>
+<li><code>release-gzip</code>：<ul>
+<li>运行方式<code>npm run release-gzip</code></li>
+<li>实现内容：在<code>npm run release</code>的基础上，实现静态js资源文件的gzip，(css文件测试出现无法解析的问题，尚未解决)，该功能需要服务端开启相应配置。</li>
+</ul>
+</li>
+<li>除了以上四条命令，在上述命令后拼接页面目录名，可实现单页面编译，例如：单独编译index页面的命令为：<code>npm run dev index</code></li>
+</ul>
+<h2 id="webpack-config-js_u8BE6_u89E3"><a href="#webpack-config-js_u8BE6_u89E3" class="headerlink" title="webpack.config.js详解"></a>webpack.config.js详解</h2><ul>
+<li><code>curPageDir</code>：当前打包目录<code>npm run dev index</code>—&gt;<code>index</code>，无则默认为全部打包。</li>
+<li><code>isRelease</code>：是否为发布版</li>
+<li><code>outputDir</code>：输出目录名，<code>release</code>版输出到<code>./release</code>目录下，<code>dev</code>版输出到<code>./dev</code>目录下</li>
+<li><code>release</code>版本时，先清空<code>release</code>目录，因为<code>release</code>版输出的文件会带上hash，不清空则目录会越来越庞大</li>
+<li><code>aliasList</code>：<code>src</code>目录下所有js，css，图片文件别名列表<code>{alias:fileUrl}</code></li>
+<li><code>entryAliasList</code>：<code>page</code>目录下所有入口文件(带<code>.entry.</code>标记)别名列表，<code>{alias:fileUrl}</code></li>
+<li><code>needHash</code>：<code>release</code>版本下，对输出文件添加hash</li>
+<li><code>CommonsChunkPlugin</code>：将所有页面引用的公共的js和css按一定规则合并成<code>common.js</code>，<code>common.css</code></li>
+<li><code>ExtractTextPlugin</code>：将css文件不以style的方式引入</li>
+<li><code>webpack.config.js</code>中主要做了入口程序的遍历获取，别名列表的遍历获取，版本输出控制以及release的hash添加。</li>
+<li>公共js，css合并成<code>lib/common.js</code>，<code>lib/common.css</code></li>
+<li>页面js以页面为单位，合并成<code>js/&quot;pageName&quot;+&quot;.entry.js&quot;</code></li>
+<li>页面css以页面为单位，合并成<code>css/&quot;pageName&quot;+&quot;.entry.css&quot;</code></li>
+</ul>
+<h2 id="webpackAfter-js_u8BE6_u89E3"><a href="#webpackAfter-js_u8BE6_u89E3" class="headerlink" title="webpackAfter.js详解"></a>webpackAfter.js详解</h2><ul>
+<li><code>GZIP_SIZE</code>，<code>isOpenGzip</code>：是否开启gzip的判断</li>
+<li>遍历<code>src/page</code>，读取目录下每一个pageName.html文件内容，扫描输出目录(以<code>release</code>为例)下的文件，将<code>release/lib/common.hash.js</code>，<code>release/lib/common.hash.css</code>，以及<code>release/js/pageName.hash.js</code>，<code>release/css/pageName.hash.css</code>引入pageName.html文件，并将其拷贝到<code>release/html</code></li>
+</ul>
+<p>至此，文件打包便已完成</p>
+
       
     </div>
     
@@ -232,13 +324,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/01/14/Webpack-React最佳实践/">Webpack-React最佳实践</a></p>
+        <p><span>本文标题:</span><a href="/2016/01/14/Webpack—React最佳实践(一)/">Webpack-React最佳实践(一)</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 代汉桥 个人博客">代汉桥</a></p>
         <p><span>发布时间:</span>2016年01月14日 - 14时57分</p>
-        <p><span>最后更新:</span>2016年01月14日 - 14时58分</p>
+        <p><span>最后更新:</span>2016年01月15日 - 17时51分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/01/14/Webpack-React最佳实践/" title="Webpack-React最佳实践">http://daihanqiao.github.io/2016/01/14/Webpack-React最佳实践/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/14/Webpack-React最佳实践/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/14/Webpack—React最佳实践(一)/" title="Webpack-React最佳实践(一)">http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践(一)/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践(一)/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -284,7 +376,7 @@
 
     <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/01/14/Webpack-React最佳实践/" data-title="Webpack-React最佳实践" data-url="http://daihanqiao.github.io/2016/01/14/Webpack-React最佳实践/"></div>
+    <div class="ds-thread" data-thread-key="2016/01/14/Webpack—React最佳实践(一)/" data-title="Webpack-React最佳实践(一)" data-url="http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践(一)/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -321,7 +413,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Webpack-React最佳实践/">Webpack-React最佳实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/前端Sublime Text 3插件推荐/">前端Sublime Text 3插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/前端Atom插件推荐/">前端Atom插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/11/Js内存机制详解/">Js内存机制详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Webpack—React最佳实践(一)/">Webpack-React最佳实践(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/前端Sublime Text 3插件推荐/">前端Sublime Text 3插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/前端Atom插件推荐/">前端Atom插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/11/Js内存机制详解/">Js内存机制详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
