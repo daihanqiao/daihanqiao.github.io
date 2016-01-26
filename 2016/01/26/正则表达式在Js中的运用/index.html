@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>正则表达式在Js中的运用 | 代汉桥的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="RegExp对象
+直接量语法
+1/pattern/attributes
+
+创建RegExp对象
+1new RegExp(pattern, attributes)
+
+参数pattern可以是指定正则表达式模式的字符串，也可以直接是一个正则表达式
+
+参数attributes是一个可选的字符串，包含属性 g、i 和 m，分别用于指定全局匹配、区分大小写的匹配和多行匹配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式在Js中的运用">
+<meta property="og:url" content="http://daihanqiao.github.io/2016/01/26/正则表达式在Js中的运用/index.html">
+<meta property="og:site_name" content="代汉桥的个人博客">
+<meta property="og:description" content="RegExp对象
+直接量语法
+1/pattern/attributes
+
+创建RegExp对象
+1new RegExp(pattern, attributes)
+
+参数pattern可以是指定正则表达式模式的字符串，也可以直接是一个正则表达式
+
+参数attributes是一个可选的字符串，包含属性 g、i 和 m，分别用于指定全局匹配、区分大小写的匹配和多行匹配">
+<meta property="og:updated_time" content="2016-01-26T08:46:39.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式在Js中的运用">
+<meta name="twitter:description" content="RegExp对象
+直接量语法
+1/pattern/attributes
+
+创建RegExp对象
+1new RegExp(pattern, attributes)
+
+参数pattern可以是指定正则表达式模式的字符串，也可以直接是一个正则表达式
+
+参数attributes是一个可选的字符串，包含属性 g、i 和 m，分别用于指定全局匹配、区分大小写的匹配和多行匹配">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?819b1c6493df653afb8c7846bc4b8db6";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">代汉桥</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">简单不先于复杂，而是在复杂之后</p>
+		
+<input type="text" class="st-default-search-input" id="search" placeholder=" Search...">
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/tags/编程环境">利其器</a></li>
+				        
+							<li><a href="/tags/javascript">善其事</a></li>
+				        
+							<li><a href="/tags/编程基础">起于累土</a></li>
+				        
+							<li><a href="/tags/编程进阶">九层之台</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="fl github" target="_blank" href="https://github.com/daihanqiao" title="github">github</a>
+					        
+								<a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/daihanqiao" title="zhihu">zhihu</a>
+					        
+								<a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=WGFrbWxga21vbhgpKXY7NzU&from=mail" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编程基础/" style="font-size: 13.33px;">编程基础</a> <a href="/tags/编程环境/" style="font-size: 13.33px;">编程环境</a> <a href="/tags/编程进阶/" style="font-size: 10px;">编程进阶</a> <a href="/tags/编辑器/" style="font-size: 13.33px;">编辑器</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">专注移动(APP)前端技术，做得了游戏，玩得了web，码得了脚本，写得了框架。撸过as3.0，lua，js，java，oc，php，python...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">代汉桥</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/head.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">代汉桥</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">简单不先于复杂，而是在复杂之后</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/tags/编程环境">利其器</a></li>
+		        
+					<li><a href="/tags/javascript">善其事</a></li>
+		        
+					<li><a href="/tags/编程基础">起于累土</a></li>
+		        
+					<li><a href="/tags/编程进阶">九层之台</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/daihanqiao" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/daihanqiao" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=WGFrbWxga21vbhgpKXY7NzU&from=mail" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-正则表达式在Js中的运用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/26/正则表达式在Js中的运用/" class="article-date">
+  	<time datetime="2016-01-26T01:57:57.000Z" itemprop="datePublished">2016-01-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      正则表达式在Js中的运用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="RegExp_u5BF9_u8C61"><a href="#RegExp_u5BF9_u8C61" class="headerlink" title="RegExp对象"></a>RegExp对象</h2><ul>
+<li><p>直接量语法</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/pattern/<span class="keyword">attributes</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建RegExp对象</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new <span class="function"><span class="title">RegExp</span><span class="params">(pattern, attributes)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数<code>pattern</code>可以是指定正则表达式模式的字符串，也可以直接是一个正则表达式</p>
+</li>
+<li>参数<code>attributes</code>是一个可选的字符串，包含属性 <code>g</code>、<code>i</code> 和 <code>m</code>，分别用于指定全局匹配、区分大小写的匹配和多行匹配<a id="more"></a>
+<h2 id="u4FEE_u9970_u7B26"><a href="#u4FEE_u9970_u7B26" class="headerlink" title="修饰符"></a>修饰符</h2></li>
+<li><code>i</code>,<code>g</code>,<code>m</code>：同<a href="http://daihanqiao.github.io/2016/01/22/正则表达式详解（一）/#decorate">正则表达式详解（一）</a></li>
+</ul>
+<h2 id="u5143_u5B57_u7B26"><a href="#u5143_u5B57_u7B26" class="headerlink" title="元字符"></a>元字符</h2><ul>
+<li>不支持<code>(?&lt;=pattern)</code>,<code>(?&lt;!pattern)</code>，其他与<a href="http://daihanqiao.github.io/2016/01/22/正则表达式详解（一）/#metacharacter">正则表达式详解（一）</a>中相同</li>
+</ul>
+<h2 id="RegExp_u5BF9_u8C61_u5C5E_u6027"><a href="#RegExp_u5BF9_u8C61_u5C5E_u6027" class="headerlink" title="RegExp对象属性"></a>RegExp对象属性</h2><ul>
+<li><code>global</code>：对应修饰符<code>g</code></li>
+<li><code>ignoreCase</code>：对应修饰符<code>i</code></li>
+<li><code>multiline</code>：对应修饰符<code>m</code></li>
+<li><p><code>source</code>：正则表达式的源文本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'^[0-9]+$'</span>,<span class="string">'g'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(re.source);<span class="comment">//^[0-9]+$：不包括修饰符</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span id="lastIndex"><code>lastIndex</code></span>：一个整数，标示开始下一次匹配的字符位置，该属性存放一个整数，它声明的是上一次匹配文本之后的第一个字符的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>,<span class="string">'g'</span>);</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"123a456b"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(re.lastIndex);<span class="comment">//输出0</span></span><br><span class="line">re.exec(str);</span><br><span class="line"><span class="built_in">console</span>.log(re.lastIndex);<span class="comment">//输出3</span></span><br><span class="line">re.exec(str);<span class="comment">//输出["456"]，上次匹配的结果是由方法exec()和test()找到的，它们都以 lastIndex 属性所指的位置(3)作为下次检索的起始点</span></span><br><span class="line"><span class="comment">//可以通过反复调用exec()和test()来遍历一个字符串中的所有匹配文本</span></span><br><span class="line"><span class="built_in">console</span>.log(re.lastIndex);<span class="comment">//输出7</span></span><br><span class="line">re.exec(str);</span><br><span class="line"><span class="built_in">console</span>.log(re.lastIndex);<span class="comment">//输出0，当方法exec()或test()再也找不到可以匹配的文本时，它们会自动把lastIndex属性重置为0</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>,<span class="string">'g'</span>);</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"123a456b"</span>;</span><br><span class="line">re.exec(str);<span class="comment">//输出["123"]</span></span><br><span class="line">re.lastIndex = <span class="number">0</span>;</span><br><span class="line">re.exec(str);<span class="comment">//依然输出["123"]，lastIndex设置后，下次搜索从新的值所指位置开始</span></span><br><span class="line"><span class="built_in">console</span>.log(re.lastIndex);<span class="comment">//输出：3</span></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">"111a222b"</span>;</span><br><span class="line">re.exec(str1);<span class="comment">//输出["222"]，re的lastIndex值仍为3，搜索从3开始，所有重新搜索新的字符串时，应手动设置lastIndex为0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>);</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"123a456b"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(re.lastIndex);<span class="comment">//输出：0</span></span><br><span class="line">re.exec(str);<span class="comment">//输出：["123"]</span></span><br><span class="line"><span class="built_in">console</span>.log(re.lastIndex);<span class="comment">//输出：0</span></span><br><span class="line">re.exec(str);<span class="comment">//输出：["123"]</span></span><br><span class="line"><span class="comment">//不具有标志 g 和不表示全局模式的RegExp对象不能使用lastIndex属性</span></span><br></pre></td></tr></table></figure>
+<h2 id="RegExp_u5BF9_u8C61_u65B9_u6CD5"><a href="#RegExp_u5BF9_u8C61_u65B9_u6CD5" class="headerlink" title="RegExp对象方法"></a>RegExp对象方法</h2><ul>
+<li><p><code>compile</code>：该方法可以编译指定的正则表达式，编译之后的正则表达式执行速度将会提高，如果正则表达式多次被调用，那么调用compile方法可以有效的提高代码的执行速度，如果该正则表达式只能被使用一次，则不会有明显的效果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"123a456b789c"</span>;</span><br><span class="line">patt=<span class="regexp">/\d&#123;3&#125;/g</span>;</span><br><span class="line">str2=str.replace(patt,<span class="string">"xxx"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str2);<span class="comment">//输出：xxxaxxxbxxxc</span></span><br><span class="line">patt=<span class="regexp">/\d&#123;4&#125;/g</span>;</span><br><span class="line">patt.compile(patt);</span><br><span class="line">str2=str.replace(patt,<span class="string">"person"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str2);<span class="comment">//输出：123a456b789c</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>exec()</code>：用于检索字符串中的正则表达式的匹配，用法参考<a href="/#lastIndex">lastIndex中的例子</a></p>
+</li>
+<li><code>test()</code>：用于检测一个字符串是否匹配某个模式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"123a456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>);</span><br><span class="line">re.test(str);<span class="comment">//输出：true</span></span><br><span class="line"><span class="keyword">var</span> re1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;4&#125;'</span>);</span><br><span class="line">re1.test(str);<span class="comment">//输出：false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="u652F_u6301_u6B63_u5219_u8868_u8FBE_u5F0F_u7684String_u5BF9_u8C61_u7684_u65B9_u6CD5"><a href="#u652F_u6301_u6B63_u5219_u8868_u8FBE_u5F0F_u7684String_u5BF9_u8C61_u7684_u65B9_u6CD5" class="headerlink" title="支持正则表达式的String对象的方法"></a>支持正则表达式的String对象的方法</h2><ul>
+<li><p><code>search</code>：检索与正则表达式相匹配的值，返回起始位置，该方法忽略它将忽略标志<code>g</code>和<code>lastIndex</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"a123b456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>,<span class="string">"g"</span>);</span><br><span class="line">str.search(re);<span class="comment">//输出：1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>match</code>：可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"a123b456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>);</span><br><span class="line"><span class="keyword">var</span> re1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>,<span class="string">"g"</span>);</span><br><span class="line"><span class="keyword">var</span> re2 = <span class="string">"123"</span>;</span><br><span class="line">str.match(re);<span class="comment">//输出：["123"]，非全局匹配时，返回匹配文本有关的信息</span></span><br><span class="line">str.match(re1);<span class="comment">//输出：["123", "456", "789"]，全局匹配时，返回所有匹配结果组成的数组</span></span><br><span class="line">str.match(re2);<span class="comment">//输出：["123"]，同re</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>replace</code>：用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"a123b456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="string">"123"</span>;</span><br><span class="line">str.replace(re,<span class="string">"xxx"</span>);<span class="comment">//输出："axxxb456b789c"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"a123b456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>);</span><br><span class="line"><span class="keyword">var</span> re1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>,<span class="string">"g"</span>);</span><br><span class="line">str.replace(re,<span class="string">"xxx"</span>);<span class="comment">//输出："axxxb456b789c"，无全局匹配时只替换第一次匹配到的结果</span></span><br><span class="line">str.replace(re1,<span class="string">"xxx"</span>);<span class="comment">//输出："axxxbxxxbxxxc"，全局匹配</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"a123b456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(\\d&#123;2&#125;)(\\d&#123;1&#125;)'</span>);</span><br><span class="line">str.replace(re,<span class="string">"$2+$1"</span>);<span class="comment">//输出："a3+12b456b789c"，$1-$99表示与re中第1到第99个子表达式(括号包裹的部分为一个子表达式)相匹配的文本</span></span><br><span class="line"><span class="comment">//同时也支持下列字符</span></span><br><span class="line"><span class="comment">//$&amp;：与re相匹配的子串</span></span><br><span class="line"><span class="comment">//$`：位于匹配子串左侧的文本</span></span><br><span class="line"><span class="comment">//$'：位于匹配子串右侧的文本</span></span><br><span class="line"><span class="comment">//$$：直接量符号</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"a123b456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(\\d&#123;2&#125;)(\\d&#123;1&#125;)'</span>,<span class="string">"g"</span>);</span><br><span class="line">str.replace(re,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(word);<span class="comment">//word为匹配结果</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"XXX"</span>+word+<span class="string">"XXX"</span>;<span class="comment">//该返回值作为新的替换值</span></span><br><span class="line">&#125;);<span class="comment">//输出："a<span class="label">XXX123XXXbXXX456XXXbXXX789XXXc"</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>split</code>：把一个字符串分割成字符串数组<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"a123b456b789c"</span>;</span><br><span class="line">str.split(<span class="string">"123"</span>);<span class="comment">//输出["a", "b456b789c"]</span></span><br><span class="line">str.split(<span class="string">"123"</span>,<span class="number">1</span>);<span class="comment">//输出["a"]，第二个参数指定返回的数组的最大长度</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"a123b456cc789ddd"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>);</span><br><span class="line">str.split(re);<span class="comment">//输出["a", "b", "cc", "ddd"]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/26/正则表达式在Js中的运用/">正则表达式在Js中的运用</a></p>
+        <p><span>文章作者:</span><a href="/" title="请访问 代汉桥 个人博客">代汉桥</a></p>
+        <p><span>发布时间:</span>2016年01月26日 - 09时57分</p>
+        <p><span>最后更新:</span>2016年01月26日 - 16时46分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/26/正则表达式在Js中的运用/" title="正则表达式在Js中的运用">http://daihanqiao.github.io/2016/01/26/正则表达式在Js中的运用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/26/正则表达式在Js中的运用/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/25/正则表达式详解（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">正则表达式详解（二）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+    <div class="bdsharebuttonbox" style="display:none;">
+<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script type="text/javascript">
+    setTimeout(function() {
+        document.querySelector('.bdsharebuttonbox').style.display = "block";
+    },500);
+</script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/01/26/正则表达式在Js中的运用/" data-title="正则表达式在Js中的运用" data-url="http://daihanqiao.github.io/2016/01/26/正则表达式在Js中的运用/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"daihanqiao"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/25/正则表达式详解（二）/" title="下一篇: 正则表达式详解（二）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/26/正则表达式在Js中的运用/">正则表达式在Js中的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/正则表达式详解（二）/">正则表达式详解（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/正则表达式详解（一）/">正则表达式详解（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Webpack—React最佳实践(一)/">Webpack-React最佳实践(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/前端Sublime Text 3插件推荐/">前端Sublime Text 3插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/前端Atom插件推荐/">前端Atom插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/11/Js内存机制详解/">Js内存机制详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200);
+            }
+            else {
+                $(".switch-btn, .switch-area").toggle(200);
+            }
+        })
+    </script>
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: false,
+            isPost: true,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-right">
+                &copy; 2016 代汉桥
+            </div>
+            <!-- <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div> -->
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >到访人数:
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量:
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var spfkConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','sYPTbV6MzNys_Gu3xMFx','2.0.0');
+</script>
+
+  </div>
+</body>
+</html>
