@@ -318,6 +318,10 @@ a {
   #container .header-subtitle {
     padding: 0 24px;
   }
+  #container .article-entry ul,
+  #container .article-entry ol {
+    font-size: 14px;
+  }
   #container .article-info-index.article-info {
     padding-top: 10px;
     margin: 0 20px;
@@ -1233,7 +1237,7 @@ color
 }
 .article-entry ul,
 .article-entry ol {
-  font-size: 14px;
+  font-size: 16px;
   margin: 10px 0px;
 }
 .article-entry li ul,
@@ -1812,7 +1816,7 @@ color
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 .article-entry blockquote {
-  background-color: #555;
+  background-color: #0c0c0c;
   padding: 10px 15px;
   word-break: break-word;
   border-left: 5px solid #2f2f2f;
