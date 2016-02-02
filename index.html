@@ -530,10 +530,10 @@
         
 
   
-    <article id="post-Webpack—React最佳实践（一）" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Webpack—React最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/14/Webpack—React最佳实践（一）/" class="article-date">
+      <a href="/2016/01/14/Webpack—React最佳实践/" class="article-date">
   	<time datetime="2016-01-14T06:57:59.000Z" itemprop="datePublished">2016-01-14</time>
 </a>
     </div>
@@ -547,7 +547,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/14/Webpack—React最佳实践（一）/">Webpack—React最佳实践（一）</a>
+      <a class="article-title" href="/2016/01/14/Webpack—React最佳实践/">Webpack—React最佳实践</a>
     </h1>
   
 
@@ -557,10 +557,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Webpack_u7BC7"><a href="#Webpack_u7BC7" class="headerlink" title="Webpack篇"></a>Webpack篇</h1><h2 id="u76EE_u6807"><a href="#u76EE_u6807" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>开发简单，项目组件化，复用性强</li>
-<li>编译简单，极简命令行，全页面/单页面均支持</li>
-<li>维护简单，项目结构清晰，耦合度低</li>
+              <h2 id="u76EE_u6807"><a href="#u76EE_u6807" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>代码结构更清晰，利于项目移植</li>
+<li>提取公共库，静态文件缓存机制让客户端资源加载时间更短</li>
+<li>基于浏览器端的gzip压缩，减轻服务端压力，进一步减少客户端资源加载时间</li>
+<li>开发环境和输出环境完全分离，更利于模块化开发，并降低因代码改动影响输出环境的风险</li>
+<li>输出环境增加hash版本号控制，杜绝了因资源缓存引起的不必要麻烦</li>
+<li>开发更简单，减少代码量，js、css、image的引用更智能化，无需知道路径</li>
+<li>编译简单，极简命令行，多页面/单页面均支持</li>
 <li>遵从约定大于配置的项目构建实践
           
       
@@ -577,7 +581,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/14/Webpack—React最佳实践（一）/#more">more >></a>
+          <a  href="/2016/01/14/Webpack—React最佳实践/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
