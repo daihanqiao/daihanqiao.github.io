@@ -29,7 +29,7 @@
 参数pattern可以是指定正则表达式模式的字符串，也可以直接是一个正则表达式
 
 参数attributes是一个可选的字符串，包含属性 g、i 和 m，分别用于指定全局匹配、区分大小写的匹配和多行匹配">
-<meta property="og:updated_time" content="2016-02-18T02:54:32.152Z">
+<meta property="og:updated_time" content="2016-02-18T03:54:43.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式在Js中的运用">
 <meta name="twitter:description" content="RegExp对象
@@ -288,7 +288,7 @@
 <li><p><code>compile</code>：该方法可以编译指定的正则表达式，编译之后的正则表达式执行速度将会提高，如果正则表达式多次被调用，那么调用compile方法可以有效的提高代码的执行速度，如果该正则表达式只能被使用一次，则不会有明显的效果</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"123a456b789c"</span>;</span><br><span class="line">patt=<span class="regexp">/\d&#123;3&#125;/g</span>;</span><br><span class="line">str2=str.replace(patt,<span class="string">"xxx"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str2);<span class="comment">//输出：xxxaxxxbxxxc</span></span><br><span class="line">patt=<span class="regexp">/\d&#123;4&#125;/g</span>;</span><br><span class="line">patt.compile(patt);</span><br><span class="line">str2=str.replace(patt,<span class="string">"person"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str2);<span class="comment">//输出：123a456b789c</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>exec()</code>：用于检索字符串中的正则表达式的匹配，用法参考<a href="/#lastIndex">lastIndex中的例子</a></p>
+<li><p><code>exec()</code>：用于检索字符串中的正则表达式的匹配，用法参考<a href="/./2016/01/26/正则表达式在Js中的运用/#lastIndex">lastIndex</a>中的例子</p>
 </li>
 <li><code>test()</code>：用于检测一个字符串是否匹配某个模式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"123a456b789c"</span>;</span><br><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;3&#125;'</span>);</span><br><span class="line">re.test(str);<span class="comment">//输出：true</span></span><br><span class="line"><span class="keyword">var</span> re1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;4&#125;'</span>);</span><br><span class="line">re1.test(str);<span class="comment">//输出：false</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -323,7 +323,7 @@
         <p><span>本文标题:</span><a href="/2016/01/26/正则表达式在Js中的运用/">正则表达式在Js中的运用</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 代汉桥 个人博客">代汉桥</a></p>
         <p><span>发布时间:</span>2016年01月26日 - 09时57分</p>
-        <p><span>最后更新:</span>2016年02月18日 - 10时54分</p>
+        <p><span>最后更新:</span>2016年02月18日 - 11时54分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/26/正则表达式在Js中的运用/" title="正则表达式在Js中的运用">http://daihanqiao.github.io/2016/01/26/正则表达式在Js中的运用/</a>
             <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/26/正则表达式在Js中的运用/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

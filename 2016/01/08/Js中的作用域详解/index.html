@@ -19,7 +19,7 @@
 而调用这些变量和函数时，必须在其生效范围内调用才有效
 这个生效范围，就是作用域
 而js中是由函数来划分一块一块的生效范围">
-<meta property="og:updated_time" content="2016-02-02T07:07:18.271Z">
+<meta property="og:updated_time" content="2016-02-18T03:52:54.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Js中的作用域详解">
 <meta name="twitter:description" content="什么是作用域
@@ -256,7 +256,7 @@
 <li>区分全局作用域和局部作用域的办法很简单：在该作用域下定义一个函数或变量，如果能作为Global对象的属性或方法访问，是则为全局作用域，该变量/函数为全局变量/函数。否则为局部作用域，该变量/函数为局部变量/函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);<span class="comment">//输出1，a为全局变量，所在作用域为全局作用域</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.test);<span class="comment">//输出test函数，test为全局函数，所在作用域为全局作用域</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.b);<span class="comment">//输出undefined，b为局部变量，所在作用域为局部作用域</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.c);<span class="comment">//输出3，不使用var关键字定义变量时，即使在局部作用域，该变量仍然为全局变量</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="u4F5C_u7528_u57DF_u6CE8_u610F_u4E8B_u9879_28_u4F5C_u7528_u57DF_u94FE_29"><a href="#u4F5C_u7528_u57DF_u6CE8_u610F_u4E8B_u9879_28_u4F5C_u7528_u57DF_u94FE_29" class="headerlink" title="作用域注意事项(作用域链)"></a>作用域注意事项(<a href="/#scope">作用域链</a>)</h3><ul>
+<h3 id="u4F5C_u7528_u57DF_u6CE8_u610F_u4E8B_u9879_28_u4F5C_u7528_u57DF_u94FE_29"><a href="#u4F5C_u7528_u57DF_u6CE8_u610F_u4E8B_u9879_28_u4F5C_u7528_u57DF_u94FE_29" class="headerlink" title="作用域注意事项(作用域链)"></a>作用域注意事项(<a href="/./2016/01/08/Js中的作用域详解/#scope">作用域链</a>)</h3><ul>
 <li><p>父作用域定义的变量/函数可直接在子作用域中使用(全局作用域可看做最上层作用域)</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);<span class="comment">//a指向父作用域中的变量a</span></span><br><span class="line">    &#125;;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//输出1</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -281,7 +281,7 @@
         <p><span>本文标题:</span><a href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 代汉桥 个人博客">代汉桥</a></p>
         <p><span>发布时间:</span>2016年01月08日 - 16时27分</p>
-        <p><span>最后更新:</span>2016年02月02日 - 15时07分</p>
+        <p><span>最后更新:</span>2016年02月18日 - 11时52分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/08/Js中的作用域详解/" title="Js中的作用域详解">http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
