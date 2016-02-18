@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Js中的this详解.md | 代汉桥的个人博客</title>
+  <title>Js中的this详解 | 代汉桥的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="什么是this
 在js运行时，每一个作用域都会生成一个内部对象，这个内部对象用关键字this表示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js中的this详解.md">
+<meta property="og:title" content="Js中的this详解">
 <meta property="og:url" content="http://daihanqiao.github.io/2016/01/09/Js中的this详解/index.html">
 <meta property="og:site_name" content="代汉桥的个人博客">
 <meta property="og:description" content="什么是this
 在js运行时，每一个作用域都会生成一个内部对象，这个内部对象用关键字this表示">
-<meta property="og:updated_time" content="2016-01-14T04:50:01.928Z">
+<meta property="og:updated_time" content="2016-02-18T02:57:58.335Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js中的this详解.md">
+<meta name="twitter:title" content="Js中的this详解">
 <meta name="twitter:description" content="什么是this
 在js运行时，每一个作用域都会生成一个内部对象，这个内部对象用关键字this表示">
   
@@ -125,7 +125,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编程基础/" style="font-size: 13.33px;">编程基础</a> <a href="/tags/编程环境/" style="font-size: 16.67px;">编程环境</a> <a href="/tags/编程进阶/" style="font-size: 10px;">编程进阶</a> <a href="/tags/编辑器/" style="font-size: 13.33px;">编辑器</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编程基础/" style="font-size: 13.33px;">编程基础</a> <a href="/tags/编程环境/" style="font-size: 16.67px;">编程环境</a> <a href="/tags/编程进阶/" style="font-size: 20px;">编程进阶</a> <a href="/tags/编辑器/" style="font-size: 13.33px;">编辑器</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
 					</div>
 				</section>
 				
@@ -210,7 +210,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Js中的this详解.md
+      Js中的this详解
     </h1>
   
 
@@ -235,7 +235,7 @@
 <li>在js运行时，每一个作用域都会生成一个内部对象，这个内部对象用关键字this表示<a id="more"></a>
 <h3 id="this_u7684_u6307_u5411"><a href="#this_u7684_u6307_u5411" class="headerlink" title="this的指向"></a>this的指向</h3></li>
 <li>通常情况下，全局作用域下的this指向Global</li>
-<li><p>构成该作用域的函数(作用域和函数的关系参见<a href="http://daihanqiao.github.io/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a>)，直接调用而不是作为某个对象的方法调用，该作用域下的this指向Global</p>
+<li><p>构成该作用域的函数(作用域和函数的关系参见<a href="/./2016/01/08/Js中的作用域详解">Js中的作用域详解</a>)，直接调用而不是作为某个对象的方法调用，该作用域下的this指向Global</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//全局作用域下的this，指向window对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//test函数未被任何变量调用，该作用域下的this指向window对象</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>构成该作用域的函数，作为某个对象的方法调用，则该作用域(不包括其子作用域)中的this指向该对象</p>
@@ -260,12 +260,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></p>
+        <p><span>本文标题:</span><a href="/2016/01/09/Js中的this详解/">Js中的this详解</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 代汉桥 个人博客">代汉桥</a></p>
         <p><span>发布时间:</span>2016年01月09日 - 14时49分</p>
-        <p><span>最后更新:</span>2016年01月14日 - 12时50分</p>
+        <p><span>最后更新:</span>2016年02月18日 - 10时57分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/01/09/Js中的this详解/" title="Js中的this详解.md">http://daihanqiao.github.io/2016/01/09/Js中的this详解/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/09/Js中的this详解/" title="Js中的this详解">http://daihanqiao.github.io/2016/01/09/Js中的this详解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/09/Js中的this详解/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -321,7 +321,7 @@
 
     <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/01/09/Js中的this详解/" data-title="Js中的this详解.md" data-url="http://daihanqiao.github.io/2016/01/09/Js中的this详解/"></div>
+    <div class="ds-thread" data-thread-key="2016/01/09/Js中的this详解/" data-title="Js中的this详解" data-url="http://daihanqiao.github.io/2016/01/09/Js中的this详解/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -360,7 +360,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/27/Git使用详解/">Git使用详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/26/正则表达式在Js中的运用/">正则表达式在Js中的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/正则表达式详解（二）/">正则表达式详解（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/正则表达式详解（一）/">正则表达式详解（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Webpack—React最佳实践/">Webpack—React最佳实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/前端Sublime Text 3插件推荐/">前端Sublime Text 3插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/前端Atom插件推荐/">前端Atom插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/11/Js内存机制详解/">Js内存机制详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/设计模式之抽象工厂模式/">设计模式之抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/设计模式之工厂模式/">设计模式之工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/02/设计模式概述/">设计模式概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/27/Git使用详解/">Git使用详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/26/正则表达式在Js中的运用/">正则表达式在Js中的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/正则表达式详解（二）/">正则表达式详解（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/正则表达式详解（一）/">正则表达式详解（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Webpack—React最佳实践/">Webpack—React最佳实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/前端Sublime Text 3插件推荐/">前端Sublime Text 3插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/前端Atom插件推荐/">前端Atom插件推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/11/Js内存机制详解/">Js内存机制详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/Js中的this详解/">Js中的this详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

@@ -124,7 +124,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编程基础/" style="font-size: 13.33px;">编程基础</a> <a href="/tags/编程环境/" style="font-size: 16.67px;">编程环境</a> <a href="/tags/编程进阶/" style="font-size: 10px;">编程进阶</a> <a href="/tags/编辑器/" style="font-size: 13.33px;">编辑器</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编程基础/" style="font-size: 13.33px;">编程基础</a> <a href="/tags/编程环境/" style="font-size: 16.67px;">编程环境</a> <a href="/tags/编程进阶/" style="font-size: 20px;">编程进阶</a> <a href="/tags/编辑器/" style="font-size: 13.33px;">编辑器</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
 					</div>
 				</section>
 				
@@ -193,6 +193,253 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-设计模式之抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/17/设计模式之抽象工厂模式/" class="article-date">
+  	<time datetime="2016-02-17T06:57:02.000Z" itemprop="datePublished">2016-02-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/17/设计模式之抽象工厂模式/">设计模式之抽象工厂模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>抽象工厂模式提供了一种方法，把那些拥有公共主题的工厂组合起来，并且在使用时不需要考虑他们生产的是哪个具体类的对象</li>
+<li>一个抽象工厂类，可以派生出多个具体工厂类，每个具体工厂类可以创建多个具体产品类的实例
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/17/设计模式之抽象工厂模式/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
+  
+    <article id="post-设计模式之工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/17/设计模式之工厂模式/" class="article-date">
+  	<time datetime="2016-02-17T02:26:37.000Z" itemprop="datePublished">2016-02-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/17/设计模式之工厂模式/">设计模式之工厂模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>定义一个用于创建对象的接口，让子类决定实例化哪一个类</li>
+<li>一个抽象产品类，可以派生出多个具体产品类</li>
+<li>简而言之就是将一段重用性高的代码，封装起来，以便多次调用
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/17/设计模式之工厂模式/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
+  
+    <article id="post-设计模式概述" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/02/设计模式概述/" class="article-date">
+  	<time datetime="2016-02-02T08:08:41.000Z" itemprop="datePublished">2016-02-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/02/设计模式概述/">设计模式概述</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="u4EC0_u4E48_u662F_u8BBE_u8BA1_u6A21_u5F0F"><a href="#u4EC0_u4E48_u662F_u8BBE_u8BA1_u6A21_u5F0F" class="headerlink" title="什么是设计模式"></a>什么是设计模式</h2><ul>
+<li>设计模式是一种可复用的解决方案，是一套对代码设计经验的总结</li>
+<li>使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性和可拓展性
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/02/设计模式概述/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
   
     <article id="post-Git使用详解" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -393,7 +640,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><a href="http://daihanqiao.github.io/2016/01/22/正则表达式详解（一）">上一篇</a>文章介绍了正则表达式的一些基础知识，这一章会结合一些例子来讲解正则表达式在实际编码中的运用<br>
+              <p><a href="/./2016/01/22/正则表达式详解（一）">上一篇</a>文章介绍了正则表达式的一些基础知识，这一章会结合一些例子来讲解正则表达式在实际编码中的运用<br>
           
       
     </div>
@@ -788,252 +1035,10 @@
         
 
   
-    <article id="post-Js内存机制详解" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/01/11/Js内存机制详解/" class="article-date">
-  	<time datetime="2016-01-11T02:50:52.000Z" itemprop="datePublished">2016-01-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/11/Js内存机制详解/">Js内存机制详解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><ul>
-<li>和大部分脚本语言(as、lua、python…)一样，javascript的内存分配和回收也是自动完成的，满足一定条件，就会被垃圾回收器自动回收
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/11/Js内存机制详解/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-            var yiliaConfig = {
-            fancybox: true,
-            mathjax: true,
-            animate: true,
-            isHome: true,
-            isPost: false,
-            isArchive: false,
-            isTag: false,
-            isCategory: false,
-            open_in_new: false
-            }
-        </script>
-        
-
-  
-    <article id="post-Js中的this详解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/09/Js中的this详解/" class="article-date">
-  	<time datetime="2016-01-09T06:49:01.000Z" itemprop="datePublished">2016-01-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/09/Js中的this详解/">Js中的this详解.md</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="u4EC0_u4E48_u662Fthis"><a href="#u4EC0_u4E48_u662Fthis" class="headerlink" title="什么是this"></a>什么是this</h3><ul>
-<li>在js运行时，每一个作用域都会生成一个内部对象，这个内部对象用关键字this表示
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/09/Js中的this详解/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-            var yiliaConfig = {
-            fancybox: true,
-            mathjax: true,
-            animate: true,
-            isHome: true,
-            isPost: false,
-            isArchive: false,
-            isTag: false,
-            isCategory: false,
-            open_in_new: false
-            }
-        </script>
-        
-
-  
-    <article id="post-Js中的作用域详解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/08/Js中的作用域详解/" class="article-date">
-  	<time datetime="2016-01-08T08:27:19.000Z" itemprop="datePublished">2016-01-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/08/Js中的作用域详解/">Js中的作用域详解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="u4EC0_u4E48_u662F_u4F5C_u7528_u57DF"><a href="#u4EC0_u4E48_u662F_u4F5C_u7528_u57DF" class="headerlink" title="什么是作用域"></a>什么是作用域</h3><ul>
-<li>通俗的讲，代码中所有变量和函数都有其各自生效的范围</li>
-<li>而调用这些变量和函数时，必须在其生效范围内调用才有效</li>
-<li>这个生效范围，就是作用域</li>
-<li><p>而js中是由函数来划分一块一块的生效范围</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/08/Js中的作用域详解/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-            var yiliaConfig = {
-            fancybox: true,
-            mathjax: true,
-            animate: true,
-            isHome: true,
-            isPost: false,
-            isArchive: false,
-            isTag: false,
-            isCategory: false,
-            open_in_new: false
-            }
-        </script>
-        
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">

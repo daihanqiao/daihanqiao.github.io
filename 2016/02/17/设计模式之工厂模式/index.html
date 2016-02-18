@@ -3,39 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Webpack—React最佳实践 | 代汉桥的个人博客</title>
+  <title>设计模式之工厂模式 | 代汉桥的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目标
-代码结构更清晰，利于项目移植
-提取公共库，静态文件缓存机制让客户端资源加载时间更短
-基于浏览器端的gzip压缩，减轻服务端压力，进一步减少客户端资源加载时间
-开发环境和输出环境完全分离，更利于模块化开发，并降低因代码改动影响输出环境的风险
-输出环境增加hash版本号控制，杜绝了因资源缓存引起的不必要麻烦
-开发更简单，减少代码量，js、css、image的引用更智能化，无需知道路径
-编译简单，">
+  <meta name="description" content="概述
+定义一个用于创建对象的接口，让子类决定实例化哪一个类
+一个抽象产品类，可以派生出多个具体产品类
+简而言之就是将一段重用性高的代码，封装起来，以便多次调用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Webpack—React最佳实践">
-<meta property="og:url" content="http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践/index.html">
+<meta property="og:title" content="设计模式之工厂模式">
+<meta property="og:url" content="http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/index.html">
 <meta property="og:site_name" content="代汉桥的个人博客">
-<meta property="og:description" content="目标
-代码结构更清晰，利于项目移植
-提取公共库，静态文件缓存机制让客户端资源加载时间更短
-基于浏览器端的gzip压缩，减轻服务端压力，进一步减少客户端资源加载时间
-开发环境和输出环境完全分离，更利于模块化开发，并降低因代码改动影响输出环境的风险
-输出环境增加hash版本号控制，杜绝了因资源缓存引起的不必要麻烦
-开发更简单，减少代码量，js、css、image的引用更智能化，无需知道路径
-编译简单，">
-<meta property="og:updated_time" content="2016-02-02T06:25:59.951Z">
+<meta property="og:description" content="概述
+定义一个用于创建对象的接口，让子类决定实例化哪一个类
+一个抽象产品类，可以派生出多个具体产品类
+简而言之就是将一段重用性高的代码，封装起来，以便多次调用">
+<meta property="og:updated_time" content="2016-02-17T09:19:30.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Webpack—React最佳实践">
-<meta name="twitter:description" content="目标
-代码结构更清晰，利于项目移植
-提取公共库，静态文件缓存机制让客户端资源加载时间更短
-基于浏览器端的gzip压缩，减轻服务端压力，进一步减少客户端资源加载时间
-开发环境和输出环境完全分离，更利于模块化开发，并降低因代码改动影响输出环境的风险
-输出环境增加hash版本号控制，杜绝了因资源缓存引起的不必要麻烦
-开发更简单，减少代码量，js、css、image的引用更智能化，无需知道路径
-编译简单，">
+<meta name="twitter:title" content="设计模式之工厂模式">
+<meta name="twitter:description" content="概述
+定义一个用于创建对象的接口，让子类决定实例化哪一个类
+一个抽象产品类，可以派生出多个具体产品类
+简而言之就是将一段重用性高的代码，封装起来，以便多次调用">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -211,11 +199,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Webpack—React最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-设计模式之工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/14/Webpack—React最佳实践/" class="article-date">
-  	<time datetime="2016-01-14T06:57:59.000Z" itemprop="datePublished">2016-01-14</time>
+      <a href="/2016/02/17/设计模式之工厂模式/" class="article-date">
+  	<time datetime="2016-02-17T02:26:37.000Z" itemprop="datePublished">2016-02-17</time>
 </a>
     </div>
   
@@ -228,7 +216,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Webpack—React最佳实践
+      设计模式之工厂模式
     </h1>
   
 
@@ -239,7 +227,7 @@
 
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目构建/">项目构建</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 	</div>
 
         <div class="clearfix"></div>
@@ -249,85 +237,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="u76EE_u6807"><a href="#u76EE_u6807" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>代码结构更清晰，利于项目移植</li>
-<li>提取公共库，静态文件缓存机制让客户端资源加载时间更短</li>
-<li>基于浏览器端的gzip压缩，减轻服务端压力，进一步减少客户端资源加载时间</li>
-<li>开发环境和输出环境完全分离，更利于模块化开发，并降低因代码改动影响输出环境的风险</li>
-<li>输出环境增加hash版本号控制，杜绝了因资源缓存引起的不必要麻烦</li>
-<li>开发更简单，减少代码量，js、css、image的引用更智能化，无需知道路径</li>
-<li>编译简单，极简命令行，多页面/单页面均支持</li>
-<li>遵从约定大于配置的项目构建实践<a id="more"></a>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2></li>
-<li><a href="https://github.com/daihanqiao/React-Contacts" target="_blank" rel="external">react-contacts</a></li>
-<li><a href="https://github.com/daihanqiao/React-Contacts-App" target="_blank" rel="external">react-contacts-app</a></li>
+        <h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>定义一个用于创建对象的接口，让子类决定实例化哪一个类</li>
+<li>一个抽象产品类，可以派生出多个具体产品类</li>
+<li>简而言之就是将一段重用性高的代码，封装起来，以便多次调用<a id="more"></a>
+<h2 id="u5E94_u7528_u573A_u666F"><a href="#u5E94_u7528_u573A_u666F" class="headerlink" title="应用场景"></a>应用场景</h2></li>
+<li>对象的构建十分复杂</li>
+<li>需要依赖具体环境创建不同实例</li>
+<li>处理大量具有相同属性的小对象</li>
 </ul>
-<h2 id="u76EE_u5F55_u7ED3_u6784"><a href="#u76EE_u5F55_u7ED3_u6784" class="headerlink" title="目录结构"></a>目录结构</h2><ul>
-<li><code>bin</code>: webpack打包过程中执行的相关脚本</li>
-<li><code>src</code>: 开发环境代码<ul>
-<li><code>base</code>：框架，配置等基础代码</li>
-<li><code>components</code>：组件代码</li>
-<li><code>page</code>：页面代码</li>
-</ul>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><ul>
+<li><p>创建3个不同的人</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tom = &#123;</span><br><span class="line">    age:<span class="number">18</span>,</span><br><span class="line">    name:<span class="string">'tom'</span>,</span><br><span class="line">    species:<span class="string">'human'</span>,</span><br><span class="line">    speak:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am tom'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> lilei = &#123;</span><br><span class="line">    age:<span class="number">19</span>,</span><br><span class="line">    name:<span class="string">'lilei'</span>,</span><br><span class="line">    species:<span class="string">'human'</span>,</span><br><span class="line">    speak:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am lilei'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> hanmeimei = &#123;</span><br><span class="line">    age:<span class="number">17</span>,</span><br><span class="line">    name:<span class="string">'hanmeimei'</span>,</span><br><span class="line">    species:<span class="string">'human'</span>,</span><br><span class="line">    speak:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am hanmeimei'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
-<li><code>package.json</code>：配置了相关打包命令</li>
-<li><code>webpack.config.js</code>：webpack配置文件</li>
-</ul>
-<h2 id="u7F16_u7801_u7EA6_u5B9A"><a href="#u7F16_u7801_u7EA6_u5B9A" class="headerlink" title="编码约定"></a>编码约定</h2><ul>
-<li>每个页面必须有且仅有一个其相应的入口程序js，html文件：例：index页面目录下必须包含<code>index.html</code>和<code>index.entry.js</code></li>
-<li>同类型的文件不可重名(所有格式图片算同一类型)</li>
-<li>html文件中无需引入任何js、css，bin目录下的脚本会处理html文件中js、css的依赖</li>
-<li>js文件的引入：<code>require(&#39;文件名&#39;)</code></li>
-<li>css文件的引入：<code>require(&#39;文件名&#39;+&#39;Css&#39;)</code></li>
-<li>图片文件的引入：<code>require(&#39;文件名&#39;+&#39;Img&#39;)</code></li>
-</ul>
-<h2 id="package-json_u8BE6_u89E3_uFF1A"><a href="#package-json_u8BE6_u89E3_uFF1A" class="headerlink" title="package.json详解："></a>package.json详解：</h2><ul>
-<li><code>dev</code>：<ul>
-<li>运行方式<code>npm run dev</code></li>
-<li>实现内容：设置环境变量为<code>dev</code>（window下和linux下有所区别），然后执行<code>webpack --progress --colors</code>对项目进行打包，打包完成后，执行bin目录下的脚本<code>webpackAfter.js</code></li>
-</ul>
-</li>
-<li><code>release</code>：<ul>
-<li>运行方式<code>npm run release</code></li>
-<li>实现内容：设置环境变量为<code>release</code>，然后执行<code>webpack -p --progress --colors</code>对项目进行打包，打包完成后，执行<code>webpackAfter.js</code></li>
-</ul>
-</li>
-<li><code>watch</code>：<ul>
-<li>运行方式<code>npm run watch</code></li>
-<li>实现内容：在<code>npm run dev</code>的基础上，实现webpack的watch模式</li>
-</ul>
-</li>
-<li><code>release-gzip</code>：<ul>
-<li>运行方式<code>npm run release-gzip</code></li>
-<li>实现内容：在<code>npm run release</code>的基础上，实现静态js资源文件的gzip，(css文件测试出现无法解析的问题，尚未解决)，该功能需要服务端开启相应配置。</li>
-</ul>
-</li>
-<li>除了以上四条命令，在上述命令后拼接页面目录名，可实现单页面编译，例如：单独编译index页面的命令为：<code>npm run dev index</code></li>
-</ul>
-<h2 id="webpack-config-js_u8BE6_u89E3"><a href="#webpack-config-js_u8BE6_u89E3" class="headerlink" title="webpack.config.js详解"></a>webpack.config.js详解</h2><ul>
-<li><code>curPageDir</code>：当前打包目录<code>npm run dev index</code>—&gt;<code>index</code>，无则默认为全部打包。</li>
-<li><code>isRelease</code>：是否为发布版</li>
-<li><code>outputDir</code>：输出目录名，<code>release</code>版输出到<code>./release</code>目录下，<code>dev</code>版输出到<code>./dev</code>目录下</li>
-<li><code>release</code>版本时，先清空<code>release</code>目录，因为<code>release</code>版输出的文件会带上hash，不清空则目录会越来越庞大</li>
-<li><code>aliasList</code>：<code>src</code>目录下所有js，css，图片文件别名列表<code>{alias:fileUrl}</code></li>
-<li><code>entryAliasList</code>：<code>page</code>目录下所有入口文件(带<code>.entry.</code>标记)别名列表，<code>{alias:fileUrl}</code></li>
-<li><code>needHash</code>：<code>release</code>版本下，对输出文件添加hash</li>
-<li><code>CommonsChunkPlugin</code>：将所有页面引用的公共的js和css按一定规则合并成<code>common.js</code>，<code>common.css</code></li>
-<li><code>ExtractTextPlugin</code>：将css文件不以style的方式引入</li>
-<li><code>webpack.config.js</code>中主要做了入口程序的遍历获取，别名列表的遍历获取，版本输出控制以及release的hash添加。</li>
-<li>公共js，css合并成<code>lib/common.js</code>，<code>lib/common.css</code></li>
-<li>页面js以页面为单位，合并成<code>js/&quot;pageName&quot;+&quot;.entry.js&quot;</code></li>
-<li>页面css以页面为单位，合并成<code>css/&quot;pageName&quot;+&quot;.entry.css&quot;</code></li>
-</ul>
-<h2 id="webpackAfter-js_u8BE6_u89E3"><a href="#webpackAfter-js_u8BE6_u89E3" class="headerlink" title="webpackAfter.js详解"></a>webpackAfter.js详解</h2><ul>
-<li><code>GZIP_SIZE</code>，<code>isOpenGzip</code>：是否开启gzip的判断</li>
-<li>遍历<code>src/page</code>，读取目录下每一个pageName.html文件内容，扫描输出目录(以<code>release</code>为例)下的文件，将<code>release/lib/common.hash.js</code>，<code>release/lib/common.hash.css</code>，以及<code>release/js/pageName.hash.js</code>，<code>release/css/pageName.hash.css</code>引入pageName.html文件，并将其拷贝到<code>release/html</code></li>
-</ul>
-<h2 id="u5907_u6CE8"><a href="#u5907_u6CE8" class="headerlink" title="备注"></a>备注</h2><ul>
-<li><code>react-contacts-app</code>项目：<ul>
-<li>输出wap端命令：<code>npm run release</code></li>
-<li>输出app端命令：<code>npm run release-app</code>，打包完成后将输出目录release_app下所有文件拷贝到APICloud项目下，修改入口配置config.xml即可（可在webpackAfter.js中配置相关脚本完成该步骤）</li>
-</ul>
+<li><p>使用工厂模式进行封装</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工厂类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Human</span>(<span class="params">age,name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.species = <span class="string">'human'</span>;</span><br><span class="line">    <span class="keyword">this</span>.speak = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am '</span>+ name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建实例</span></span><br><span class="line"><span class="keyword">var</span> tom = <span class="keyword">new</span> Human(<span class="number">18</span>,<span class="string">'tom'</span>);</span><br><span class="line"><span class="keyword">var</span> lilei = <span class="keyword">new</span> Human(<span class="number">19</span>,<span class="string">'lilei'</span>);</span><br><span class="line"><span class="keyword">var</span> hanmeimei = <span class="keyword">new</span> Human(<span class="number">17</span>,<span class="string">'hanmeimei'</span>);</span><br><span class="line">tom.speak();<span class="comment">//I am tom</span></span><br><span class="line">lilei.speak();<span class="comment">//I am lilei</span></span><br><span class="line">hanmeimei.speak();<span class="comment">//I am hanmeimei</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -338,13 +262,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/01/14/Webpack—React最佳实践/">Webpack—React最佳实践</a></p>
+        <p><span>本文标题:</span><a href="/2016/02/17/设计模式之工厂模式/">设计模式之工厂模式</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 代汉桥 个人博客">代汉桥</a></p>
-        <p><span>发布时间:</span>2016年01月14日 - 14时57分</p>
-        <p><span>最后更新:</span>2016年02月02日 - 14时25分</p>
+        <p><span>发布时间:</span>2016年02月17日 - 10时26分</p>
+        <p><span>最后更新:</span>2016年02月17日 - 17时19分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/01/14/Webpack—React最佳实践/" title="Webpack—React最佳实践">http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/02/17/设计模式之工厂模式/" title="设计模式之工厂模式">http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -357,18 +281,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/01/22/正则表达式详解（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/17/设计模式之抽象工厂模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          正则表达式详解（一）
+          设计模式之抽象工厂模式
         
       </div>
     </a>
   
   
-    <a href="/2016/01/14/前端Sublime Text 3插件推荐/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端Sublime Text 3插件推荐</div>
+    <a href="/2016/02/02/设计模式概述/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式概述</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -399,7 +323,7 @@
 
     <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/01/14/Webpack—React最佳实践/" data-title="Webpack—React最佳实践" data-url="http://daihanqiao.github.io/2016/01/14/Webpack—React最佳实践/"></div>
+    <div class="ds-thread" data-thread-key="2016/02/17/设计模式之工厂模式/" data-title="设计模式之工厂模式" data-url="http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -424,7 +348,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/01/22/正则表达式详解（一）/" title="上一篇: 正则表达式详解（一）">
+            <a href="/2016/02/17/设计模式之抽象工厂模式/" title="上一篇: 设计模式之抽象工厂模式">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -432,7 +356,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/01/14/前端Sublime Text 3插件推荐/" title="下一篇: 前端Sublime Text 3插件推荐">
+            <a href="/2016/02/02/设计模式概述/" title="下一篇: 设计模式概述">
                 <i class="fa fa-angle-right"></i>
             </a>
         
