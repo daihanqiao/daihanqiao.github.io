@@ -82,10 +82,10 @@
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>菜单</li>
-						<li>標籤</li>
+						<li>标签</li>
 						
 						
-						<li>關於</li>
+						<li>关于我</li>
 						
 					</ul>
 				</div>
@@ -124,7 +124,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/正则表达式/" style="font-size: 16.67px;">正则表达式</a> <a href="/tags/编程基础/" style="font-size: 13.33px;">编程基础</a> <a href="/tags/编程环境/" style="font-size: 16.67px;">编程环境</a> <a href="/tags/编程进阶/" style="font-size: 20px;">编程进阶</a> <a href="/tags/编辑器/" style="font-size: 13.33px;">编辑器</a> <a href="/tags/设计模式/" style="font-size: 16.67px;">设计模式</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/正则表达式/" style="font-size: 14px;">正则表达式</a> <a href="/tags/编程基础/" style="font-size: 12px;">编程基础</a> <a href="/tags/编程环境/" style="font-size: 14px;">编程环境</a> <a href="/tags/编程进阶/" style="font-size: 20px;">编程进阶</a> <a href="/tags/编辑器/" style="font-size: 12px;">编辑器</a> <a href="/tags/设计模式/" style="font-size: 18px;">设计模式</a> <a href="/tags/项目构建/" style="font-size: 12px;">项目构建</a>
 					</div>
 				</section>
 				
@@ -193,6 +193,340 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-react-hybrid最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/13/react-hybrid最佳实践/" class="article-date">
+  	<time datetime="2016-07-13T06:57:59.000Z" itemprop="datePublished">2016-07-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/13/react-hybrid最佳实践/">react-hybrid最佳实践</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>基于react，webpack，apicloud同时构建ios，android，wap端的应用框架，根据不同打包命令，引用不同库文件，最终输出适合不同平台的应用</p>
+</blockquote>
+<h2 id="u6F14_u793A"><a href="#u6F14_u793A" class="headerlink" title="演示"></a>演示</h2><p><a href="https://github.com/daihanqiao/react-hybrid" target="_blank" rel="external">下载项目</a>后访问<code>./dev/html/example.html</code></p>
+<h2 id="u4F7F_u7528"><a href="#u4F7F_u7528" class="headerlink" title="使用"></a>使用</h2><h3 id="u5B89_u88C5_u4F9D_u8D56_u5E93"><a href="#u5B89_u88C5_u4F9D_u8D56_u5E93" class="headerlink" title="安装依赖库"></a>安装依赖库</h3><p>运行环境：Windows，（Linux和Mac需要修改package.json下scripts中设置环境变量的命令如：<code>set NODE_ENV=release</code>=&gt;<code>env NODE_ENV=release</code>，以及脚本路径<code>\\</code>=&gt;<code>/</code></p>
+<p>安装：nodejs</p>
+<p>在项目根目录依次运行：</p>
+<p><code>npm i cnpm -g</code></p>
+<p><code>cnpm i</code></p>
+<h3 id="u9879_u76EE_u7ED3_u6784"><a href="#u9879_u76EE_u7ED3_u6784" class="headerlink" title="项目结构"></a>项目结构</h3><blockquote>
+<p><strong>bin</strong>：项目中所用相关脚本</p>
+<blockquote>
+<p><strong>buildHtml</strong>：webpack打包完成后，将html文件进行相关处理后（例如对js文件进行gzip）生成到输出目录</p>
+<p><strong>buildLib</strong>：脚本公共库</p>
+<p><strong>copyFiles</strong>：需要输出ios，android版本时，会运行该脚本，将输出目录release_app下的文件拷贝到APICLOUD项目目录中（需配置apicloud项目地址）</p>
+<p><strong>createPage</strong>：创新新页面时运行该脚本</p>
+</blockquote>
+<p><strong>输出目录</strong>：</p>
+<blockquote>
+<p><strong>dev</strong>：开发环境的输出目录</p>
+<p><strong>release0</strong>：发布环境的输出目录，使用配置config0.js</p>
+<p><strong>release1</strong>：发布环境的输出目录，使用配置config1.js</p>
+<p><strong>release_app</strong>：app的输出目录</p>
+</blockquote>
+<p><strong>src</strong>：代码文件</p>
+<blockquote>
+<p><strong>lib</strong>：基础库+基础组件</p>
+<p><strong>general</strong>：项目相关的公共样式，js文件，公共组件</p>
+<p><strong>page</strong>：页面目录</p>
+</blockquote>
+</blockquote>
+<h3 id="u65B0_u5EFA_u9875_u9762"><a href="#u65B0_u5EFA_u9875_u9762" class="headerlink" title="新建页面"></a>新建页面</h3><p>规则：<strong>约定大于配置</strong>，由<code>模块名_页面名</code>组成</p>
+<p>运行命令：<code>npm run page user_login 登录 css</code></p>
+<p>命令参数说明：</p>
+<blockquote>
+<p><strong>user_login</strong>：user：模块名，login：页面名</p>
+<p> <strong>登录</strong>：页面标题</p>
+<p>  <strong>css</strong>：该页面是否需要样式文件</p>
+</blockquote>
+<p>命令运行成功后，会在page目录下生成<code>user_login</code>目录，包含<code>user_login.entry.js</code> ，<code>user_login.html</code>，<code>user_login.scss</code></p>
+<h3 id="u9879_u76EE_u8C03_u8BD5"><a href="#u9879_u76EE_u8C03_u8BD5" class="headerlink" title="项目调试"></a>项目调试</h3><p>运行命令：<code>npm run watch</code></p>
+<p>命令运行成功后，会在根目录生成<code>dev</code>目录，该目录下<code>html/</code>中的文件即可在游览器中正常运行，当<code>src</code>目录中有文件被修改时，会实时更新到<code>dev</code>目录</p>
+<h3 id="u9879_u76EE_u53D1_u5E03"><a href="#u9879_u76EE_u53D1_u5E03" class="headerlink" title="项目发布"></a>项目发布</h3><p>输出wap端：<code>npm run release num</code></p>
+<p>输出wap端gzip版本：<code>npm run release-gzip num</code></p>
+<p>输出app端：<code>npm run release-app num</code></p>
+<p>命令参数说明：</p>
+<blockquote>
+<p><strong>num</strong>：打包时所调用的<code>src/general/common/js/config.js</code>版本，如：<code>1</code>=&gt;<code>config1.js</code>，会在根目录输出release1目录</p>
+<p><strong>gzip</strong>：需服务端开启相应配置支持</p>
+</blockquote>
+<p>app端说明：</p>
+<blockquote>
+<p>配置<code>bin/copyFiles.js</code>中<code>newAppFilePath</code>路径</p>
+<p>命令执行完成后，提交<code>newAppFilePath</code>路径下apicloud项目至apicloud云端，云端打包输出android，ios安装包，<strong>注意</strong>：apicloud项目的<code>config.xml</code>需要修改入口文件<code>&lt;content src=&quot;html/项目入口文件名.html&quot;/&gt;</code></p>
+</blockquote>
+<h3 id="u63A5_u53E3_u6570_u636E"><a href="#u63A5_u53E3_u6570_u636E" class="headerlink" title="接口数据"></a>接口数据</h3><blockquote>
+<p><strong>测试接口数据</strong>：配置<code>./src/general/js/common</code>中<code>TEST_DATA_CONFIG</code>为true，测试接口<code>act</code>,<code>op</code>均为页面名，在<code>./src/general/js/testData</code>中添加相应数据即可</p>
+<p><strong>正式接口数据</strong>：配置<code>./src/general/js/config</code>中<code>API_URL</code>，修改<code>common</code>中请求方法即可</p>
+</blockquote>
+<h3 id="u57FA_u7840_u7EC4_u4EF6"><a href="#u57FA_u7840_u7EC4_u4EF6" class="headerlink" title="基础组件"></a>基础组件</h3><p>详细文档见组件源码中用法示例</p>
+<blockquote>
+<p><strong>actionSheet</strong>：从下弹出的仿IOS选择器</p>
+<p><strong>apposeBtn</strong>：并排两个按钮</p>
+<p><strong>apposeFixedBtn</strong>：上浮并排两个按钮</p>
+<p><strong>blockBtn</strong>：块级按钮</p>
+<p><strong>blockInput</strong>：块状输入框，支持右侧带按钮</p>
+<p><strong>blockTitle</strong>：块级标题，如有子元素会自动缩进</p>
+<p><strong>bottomTab</strong>：底部tab</p>
+<p><strong>callEl</strong>：拨打电话组件（对wap端和app端做兼容）</p>
+<p><strong>checkBox</strong>：选择框</p>
+<p><strong>foldItem</strong>：折叠Item</p>
+<p><strong>inputWithBtn</strong>：左侧带标题，右侧带按钮的输入框</p>
+<p><strong>labelInput</strong>：文本组件，支持左侧带标题，右侧带箭头，是否为输入文本</p>
+<p><strong>loader</strong>：加载loading</p>
+<p><strong>mediaItem</strong>：图文组件</p>
+<p><strong>numBox</strong> ：数量选择框</p>
+<p><strong>poppicker</strong>：多级联动选择器，支持一二三级联动，应用场景如省市区选择器</p>
+<p><strong>radio</strong>：单选框</p>
+<p><strong>radioList</strong>：单选组</p>
+<p><strong>scroll</strong>：滚动组件</p>
+<p><strong>slider</strong>：轮播组件</p>
+<p><strong>tabBtnGroup</strong>：tab按钮组</p>
+<p><strong>topBar</strong>：顶部bar</p>
+</blockquote>
+<h3 id="u57FA_u7840_u5E93"><a href="#u57FA_u7840_u5E93" class="headerlink" title="基础库"></a>基础库</h3><blockquote>
+<p><strong>base</strong>：<code>base.app</code>：打包app端时所运行的基础库，<code>base</code>：打包wap端时所运行的基础库， 详情见<a href="/./src/lib/base/README.md">base文档</a></p>
+<p><strong>fiexible</strong>：实现适配的基础库，<code>base</code>中已引入，使用方法：编写样式时，使用<code>pxToRem(px)</code>替代<code>px</code>，如：<code>font-size: pxToRem(14px);</code>=&gt;<code>font-size: 14px;</code></p>
+<p><strong>loginSdk</strong>：第三方登录sdk，app端已实现微信登录，其他登录方式和wap端可拓展，保持参数及返回一致即可，使用方法见<code>loginSdk</code>源码示例</p>
+<p><strong>paySdk</strong>：第三方支付sdk，wap端已实现微信支付，其他支付方式和app端可拓展，保持参数一致即可，使用方法见<code>paySdk</code>源码示例</p>
+<p><strong>shareSdk</strong>：第三方分享sdk，app端已实现微信分享，其他分享方式和wap端可拓展，保持参数一致即可，使用方法见<code>shareSdk</code>源码示例</p>
+<p><strong>storage</strong>：本地数据管理基础库，已封装至<code>base</code></p>
+<p><strong>timing</strong>：计时器工具，使用方法见<code>timing</code>源码示例</p>
+</blockquote>
+<h2 id="u5173_u4E8E_u4F5C_u8005"><a href="#u5173_u4E8E_u4F5C_u8005" class="headerlink" title="关于作者"></a>关于作者</h2><ul>
+<li>个人博客：<a href="http://daihanqiao.github.io/">http://daihanqiao.github.io/</a></li>
+<li>邮件：daihanqiao@126.com</li>
+<li>QQ: 935483576</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目构建/">项目构建</a></li></ul>
+	</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
+  
+    <article id="post-设计模式之建造者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/18/设计模式之建造者模式/" class="article-date">
+  	<time datetime="2016-02-18T07:24:42.000Z" itemprop="datePublished">2016-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/18/设计模式之建造者模式/">设计模式之建造者模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><h2 id="u5E94_u7528_u573A_u666F"><a href="#u5E94_u7528_u573A_u666F" class="headerlink" title="应用场景"></a>应用场景</h2></li>
+<li>创建一些复杂的对象时，这些对象的内部组成构件间的建造顺序是稳定的，但是对象的内部组成构件面临着复杂的变化</li>
+<li>要创建的复杂对象的算法，独立于该对象的组成部分，也独立于组成部分的装配方法时</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
+  
+    <article id="post-设计模式之单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/18/设计模式之单例模式/" class="article-date">
+  	<time datetime="2016-02-18T06:29:57.000Z" itemprop="datePublished">2016-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/18/设计模式之单例模式/">设计模式之单例模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>保证一个类仅有一个实例，并提供一个访问它的全局访问点
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/18/设计模式之单例模式/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
   
     <article id="post-设计模式之抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -741,264 +1075,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/01/22/正则表达式详解（一）/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-            var yiliaConfig = {
-            fancybox: true,
-            mathjax: true,
-            animate: true,
-            isHome: true,
-            isPost: false,
-            isArchive: false,
-            isTag: false,
-            isCategory: false,
-            open_in_new: false
-            }
-        </script>
-        
-
-  
-    <article id="post-Webpack—React最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/14/Webpack—React最佳实践/" class="article-date">
-  	<time datetime="2016-01-14T06:57:59.000Z" itemprop="datePublished">2016-01-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/14/Webpack—React最佳实践/">Webpack—React最佳实践</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="u76EE_u6807"><a href="#u76EE_u6807" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>代码结构更清晰，利于项目移植</li>
-<li>提取公共库，静态文件缓存机制让客户端资源加载时间更短</li>
-<li>基于浏览器端的gzip压缩，减轻服务端压力，进一步减少客户端资源加载时间</li>
-<li>开发环境和输出环境完全分离，更利于模块化开发，并降低因代码改动影响输出环境的风险</li>
-<li>输出环境增加hash版本号控制，杜绝了因资源缓存引起的不必要麻烦</li>
-<li>开发更简单，减少代码量，js、css、image的引用更智能化，无需知道路径</li>
-<li>编译简单，极简命令行，多页面/单页面均支持</li>
-<li>遵从约定大于配置的项目构建实践
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程进阶/">编程进阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目构建/">项目构建</a></li></ul>
-	</div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/14/Webpack—React最佳实践/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-            var yiliaConfig = {
-            fancybox: true,
-            mathjax: true,
-            animate: true,
-            isHome: true,
-            isPost: false,
-            isArchive: false,
-            isTag: false,
-            isCategory: false,
-            open_in_new: false
-            }
-        </script>
-        
-
-  
-    <article id="post-前端Sublime Text 3插件推荐" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/14/前端Sublime Text 3插件推荐/" class="article-date">
-  	<time datetime="2016-01-14T03:09:27.000Z" itemprop="datePublished">2016-01-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/14/前端Sublime Text 3插件推荐/">前端Sublime Text 3插件推荐</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ul>
-<li><p>Package Control ：<code>包管理器</code></p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.<span class="keyword">join</span>(ipp, pf), <span class="string">'wb'</span>).<span class="keyword">write</span>(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).<span class="keyword">read</span>())</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Emmet ：<code>编码神器</code></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程环境/">编程环境</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编辑器/">编辑器</a></li></ul>
-	</div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/14/前端Sublime Text 3插件推荐/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-            var yiliaConfig = {
-            fancybox: true,
-            mathjax: true,
-            animate: true,
-            isHome: true,
-            isPost: false,
-            isArchive: false,
-            isTag: false,
-            isCategory: false,
-            open_in_new: false
-            }
-        </script>
-        
-
-  
-    <article id="post-前端Atom插件推荐" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/13/前端Atom插件推荐/" class="article-date">
-  	<time datetime="2016-01-13T09:09:41.000Z" itemprop="datePublished">2016-01-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/13/前端Atom插件推荐/">前端Atom插件推荐</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ul>
-<li><p>minimap:<code>代码缩略图</code></p>
-</li>
-<li><p>atom-beautify:<code>代码格式化</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#keymap.cson添加</span></span><br><span class="line"><span class="string">'.editor'</span>:</span><br><span class="line"><span class="string">'ctrl-alt-l'</span>: <span class="string">'atom-beautify:beautify-editor'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程环境/">编程环境</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编辑器/">编辑器</a></li></ul>
-	</div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/13/前端Atom插件推荐/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

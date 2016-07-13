@@ -3,27 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>设计模式之工厂模式 | 代汉桥的个人博客</title>
+  <title>设计模式之单例模式 | 代汉桥的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="概述
-定义一个用于创建对象的接口，让子类决定实例化哪一个类
-一个抽象产品类，可以派生出多个具体产品类
-简而言之就是将一段重用性高的代码，封装起来，以便多次调用">
+保证一个类仅有一个实例，并提供一个访问它的全局访问点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式之工厂模式">
-<meta property="og:url" content="http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/index.html">
+<meta property="og:title" content="设计模式之单例模式">
+<meta property="og:url" content="http://daihanqiao.github.io/2016/02/18/设计模式之单例模式/index.html">
 <meta property="og:site_name" content="代汉桥的个人博客">
 <meta property="og:description" content="概述
-定义一个用于创建对象的接口，让子类决定实例化哪一个类
-一个抽象产品类，可以派生出多个具体产品类
-简而言之就是将一段重用性高的代码，封装起来，以便多次调用">
-<meta property="og:updated_time" content="2016-02-17T09:19:30.697Z">
+保证一个类仅有一个实例，并提供一个访问它的全局访问点">
+<meta property="og:updated_time" content="2016-02-18T07:18:14.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式之工厂模式">
+<meta name="twitter:title" content="设计模式之单例模式">
 <meta name="twitter:description" content="概述
-定义一个用于创建对象的接口，让子类决定实例化哪一个类
-一个抽象产品类，可以派生出多个具体产品类
-简而言之就是将一段重用性高的代码，封装起来，以便多次调用">
+保证一个类仅有一个实例，并提供一个访问它的全局访问点">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -199,11 +193,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-设计模式之工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-设计模式之单例模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/17/设计模式之工厂模式/" class="article-date">
-  	<time datetime="2016-02-17T02:26:37.000Z" itemprop="datePublished">2016-02-17</time>
+      <a href="/2016/02/18/设计模式之单例模式/" class="article-date">
+  	<time datetime="2016-02-18T06:29:57.000Z" itemprop="datePublished">2016-02-18</time>
 </a>
     </div>
   
@@ -216,7 +210,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      设计模式之工厂模式
+      设计模式之单例模式
     </h1>
   
 
@@ -238,22 +232,12 @@
       
           
         <h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>定义一个用于创建对象的接口，让子类决定实例化哪一个类</li>
-<li>一个抽象产品类，可以派生出多个具体产品类</li>
-<li>简而言之就是将一段重用性高的代码，封装起来，以便多次调用<a id="more"></a>
+<li>保证一个类仅有一个实例，并提供一个访问它的全局访问点<a id="more"></a>
 <h2 id="u5E94_u7528_u573A_u666F"><a href="#u5E94_u7528_u573A_u666F" class="headerlink" title="应用场景"></a>应用场景</h2></li>
-<li>对象的构建十分复杂</li>
-<li>需要依赖具体环境创建不同实例</li>
-<li>处理大量具有相同属性的小对象</li>
+<li>用于操作需要保证唯一性的实例（如页面中的loading界面）</li>
+<li>用于系统间各种模式的通信协调</li>
 </ul>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><ul>
-<li><p>创建3个不同的人</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tom = &#123;</span><br><span class="line">    age:<span class="number">18</span>,</span><br><span class="line">    name:<span class="string">'tom'</span>,</span><br><span class="line">    species:<span class="string">'human'</span>,</span><br><span class="line">    speak:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am tom'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> lilei = &#123;</span><br><span class="line">    age:<span class="number">19</span>,</span><br><span class="line">    name:<span class="string">'lilei'</span>,</span><br><span class="line">    species:<span class="string">'human'</span>,</span><br><span class="line">    speak:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am lilei'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> hanmeimei = &#123;</span><br><span class="line">    age:<span class="number">17</span>,</span><br><span class="line">    name:<span class="string">'hanmeimei'</span>,</span><br><span class="line">    species:<span class="string">'human'</span>,</span><br><span class="line">    speak:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am hanmeimei'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用工厂模式进行封装</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工厂类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Human</span>(<span class="params">age,name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.species = <span class="string">'human'</span>;</span><br><span class="line">    <span class="keyword">this</span>.speak = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'I am '</span>+ name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建实例</span></span><br><span class="line"><span class="keyword">var</span> tom = <span class="keyword">new</span> Human(<span class="number">18</span>,<span class="string">'tom'</span>);</span><br><span class="line"><span class="keyword">var</span> lilei = <span class="keyword">new</span> Human(<span class="number">19</span>,<span class="string">'lilei'</span>);</span><br><span class="line"><span class="keyword">var</span> hanmeimei = <span class="keyword">new</span> Human(<span class="number">17</span>,<span class="string">'hanmeimei'</span>);</span><br><span class="line">tom.speak();<span class="comment">//I am tom</span></span><br><span class="line">lilei.speak();<span class="comment">//I am lilei</span></span><br><span class="line">hanmeimei.speak();<span class="comment">//I am hanmeimei</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Singleton = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">/*这里定义单例代码*/</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            publicMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</span><br><span class="line">            &#125;,</span><br><span class="line">            publicProperty: <span class="string">'test'</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> instantiated;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getInstance: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!instantiated) &#123;</span><br><span class="line">                instantiated = init();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instantiated;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">/*调用公有的方法来获取实例:*/</span></span><br><span class="line">Singleton.getInstance().publicMethod();</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -262,13 +246,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/02/17/设计模式之工厂模式/">设计模式之工厂模式</a></p>
+        <p><span>本文标题:</span><a href="/2016/02/18/设计模式之单例模式/">设计模式之单例模式</a></p>
         <p><span>文章作者:</span><a href="/" title="请访问 代汉桥 个人博客">代汉桥</a></p>
-        <p><span>发布时间:</span>2016年02月17日 - 10时26分</p>
-        <p><span>最后更新:</span>2016年02月17日 - 17时19分</p>
+        <p><span>发布时间:</span>2016年02月18日 - 14时29分</p>
+        <p><span>最后更新:</span>2016年02月18日 - 15时18分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/02/17/设计模式之工厂模式/" title="设计模式之工厂模式">http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/02/18/设计模式之单例模式/" title="设计模式之单例模式">http://daihanqiao.github.io/2016/02/18/设计模式之单例模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://daihanqiao.github.io/2016/02/18/设计模式之单例模式/　　作者: 代汉桥" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -281,18 +265,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/02/17/设计模式之抽象工厂模式/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/18/设计模式之建造者模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          设计模式之抽象工厂模式
+          设计模式之建造者模式
         
       </div>
     </a>
   
   
-    <a href="/2016/02/02/设计模式概述/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式概述</div>
+    <a href="/2016/02/17/设计模式之抽象工厂模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式之抽象工厂模式</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -323,7 +307,7 @@
 
     <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/02/17/设计模式之工厂模式/" data-title="设计模式之工厂模式" data-url="http://daihanqiao.github.io/2016/02/17/设计模式之工厂模式/"></div>
+    <div class="ds-thread" data-thread-key="2016/02/18/设计模式之单例模式/" data-title="设计模式之单例模式" data-url="http://daihanqiao.github.io/2016/02/18/设计模式之单例模式/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -348,7 +332,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/02/17/设计模式之抽象工厂模式/" title="上一篇: 设计模式之抽象工厂模式">
+            <a href="/2016/02/18/设计模式之建造者模式/" title="上一篇: 设计模式之建造者模式">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -356,7 +340,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/02/02/设计模式概述/" title="下一篇: 设计模式概述">
+            <a href="/2016/02/17/设计模式之抽象工厂模式/" title="下一篇: 设计模式之抽象工厂模式">
                 <i class="fa fa-angle-right"></i>
             </a>
         
